@@ -1,7 +1,8 @@
 import React from "react";
 import "./btn-icon.css";
 
-export default function BtnIcon({ className, children, ...btnProps }) {
+export default function BtnIcon(props: any) {
+  const { className, children, ...btnProps } = props;
   return (
     <div className={`${className} icon-container `}>
       <button

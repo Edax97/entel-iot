@@ -3,13 +3,8 @@ import Select from "react-select";
 import BtnIcon from "../../common/btn-icon/BtnIcon";
 
 /*Props: options: {value, label}[] instalValue instalLabel onSelect(value)  onReload*/
-export default function ConfigBar({
-  options,
-  instalValue,
-  instalLabel,
-  onSelect,
-  onReload,
-}) {
+export default function ConfigBar(props: any) {
+  const { options, instalValue, instalLabel, onSelect, onReload } = props;
   return (
     <div className=" d-flex gap-3 align-items-center">
       <span className="fs-5">{instalLabel}</span>

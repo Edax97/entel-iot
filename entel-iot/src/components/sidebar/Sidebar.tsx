@@ -1,9 +1,14 @@
 import React from "react";
 import "./Sidebar.css";
-import logo from "../../assets/logo.png";
+//import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 
-function Sidebar({ sidebarOpen, setSidebarOpen }) {
+interface Props {
+  sidebarOpen: boolean;
+  setSidebarOpen: any;
+}
+function Sidebar(props: Props) {
+  const { sidebarOpen, setSidebarOpen } = props;
   const ModSidebaropen = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -16,7 +21,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div className="Logocontent">
         <div className="imgcontent">
           <img
-            src={logo}
+            src={""}
             style={{ marginLeft: "20px", height: "1.75rem", marginTop: "-8px" }}
             alt=""
           />
