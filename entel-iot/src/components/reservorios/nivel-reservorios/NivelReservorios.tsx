@@ -9,6 +9,7 @@ import { ReactComponent as WaterSensor } from "../../../assets/water-sensor.svg"
 import { BsBatteryHalf as Battery } from "react-icons/bs";
 import SignalIndicator from "../signal-indicator/SignalIndicator";
 import ReservorioDiagram from "../reservorio-diagram/ReservorioDiagram";
+import BtnIcon from "../../common/btn-icon/BtnIcon";
 
 interface Props {
   reservorios: ReservorioLevelType[];
@@ -19,8 +20,12 @@ export default function NivelReservorios(props: Props) {
       title="Nivel de reservorios"
       toolbar={
         <>
-          <Expand className="fs-6 text-secondary" />
-          <Options className="fs-6 text-secondary" />
+          <BtnIcon>
+            <Expand className="fs-6 text-secondary" />
+          </BtnIcon>
+          <BtnIcon>
+            <Options className="fs-6 text-secondary" />
+          </BtnIcon>
         </>
       }
     >

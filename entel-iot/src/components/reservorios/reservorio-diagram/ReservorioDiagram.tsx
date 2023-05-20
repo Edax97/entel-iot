@@ -49,12 +49,12 @@ export default function ReservorioDiagram(props: Props) {
           />
           <animate
             attributeName="y"
-            values={`${tankHeight - lowLevel};${tankHeight - waterHeight}`}
+            values={`${tankHeight};${tankHeight - waterHeight}`}
             dur="2s"
           />
           <animate
             attributeName="height"
-            values={`${lowLevel - 1}};${waterHeight - 1}`}
+            values={`${-1}};${waterHeight - 1}`}
             dur="2s"
           />
         </svg>

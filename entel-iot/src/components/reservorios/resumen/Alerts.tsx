@@ -1,6 +1,7 @@
 import React from "react";
 import { BsExclamationTriangle as Triangle } from "react-icons/bs";
 import { SlOptions as Options } from "react-icons/sl";
+import BtnIcon from "../../common/btn-icon/BtnIcon";
 import CardWidget from "../../common/card-widget/CardWidget";
 
 export default function Alerts(props: any) {
@@ -10,7 +11,9 @@ export default function Alerts(props: any) {
       title={""}
       toolbar={
         <>
-          <Options className="fs-6 text-secondary" />
+          <BtnIcon>
+            <Options className="fs-6 text-secondary" />
+          </BtnIcon>
         </>
       }
       className="bg-warning bg-opacity-50"

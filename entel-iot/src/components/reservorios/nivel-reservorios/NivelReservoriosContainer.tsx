@@ -6,8 +6,8 @@ import NivelReservorios from "./NivelReservorios";
 
 export default function NivelReservoriosContainer() {
   const reservorios = useAppStore((state) => state.reservorios);
-  const getLoading = useAppStore((state) => state.getLoading);
-  const getError = useAppStore((state) => state.getError);
+  const getLoading = useAppStore((state) => state.getResLoading);
+  const getError = useAppStore((state) => state.getResError);
 
   if (getLoading) return <Loading className="my-5" />;
   if (getError) return <ErrorMessage message="Error al cargar datos." />;

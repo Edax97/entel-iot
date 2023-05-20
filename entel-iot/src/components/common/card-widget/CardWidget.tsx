@@ -15,9 +15,9 @@ export default function CardWidget(props: Props) {
       }  card border-0 shadow  `}
       {...restProps}
     >
-      <div className="d-flex px-3 pt-2">
-        <span className=" text-opacity-75">{title}</span>
-        <span className="ms-auto d-flex gap-3 align-items-center">
+      <div className="d-flex ps-3 pe-2 pt-2">
+        <span className=" text-dark text-opacity-75 pt-2">{title}</span>
+        <span className="ms-auto d-flex gap-2 align-items-center">
           {toolbar}
         </span>
       </div>

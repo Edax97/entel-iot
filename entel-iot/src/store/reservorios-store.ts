@@ -15,8 +15,8 @@ export interface ReservorioLevelType {
 
 export interface ReservoriosStoreType {
   reservorios: ReservorioLevelType[];
-  getLoading: boolean;
-  getError: boolean;
+  getResLoading: boolean;
+  getResError: boolean;
   getReservorios: () => void;
 }
 
@@ -27,14 +27,14 @@ export const reservoriosStore: StateCreator<
   ReservoriosStoreType
 > = (set) => ({
   reservorios: [],
-  getLoading: true,
-  getError: false,
+  getResLoading: false,
+  getResError: false,
   getReservorios: () => {
-    set({ getLoading: true, getError: false });
+    set({ getResLoading: true, getResError: false });
     getReservoriosAPI()
       .then((reservorios) => {
-        set({ getLoading: false, reservorios });
+        set({ getResLoading: false, reservorios });
       })
-      .catch(() => set({ getError: true, getLoading: false }));
+      .catch(() => set({ getResError: true, getResLoading: false }));
   },
 });
