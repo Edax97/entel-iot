@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface Props {
-  title: any;
-  toolbar: any;
-  children: any;
-  className: string;
+  title?: string;
+  toolbar?: ReactNode;
+  children: ReactNode;
+  className?: string;
 }
 export default function CardWidget(props: Props) {
   const { title, toolbar, children, className, ...restProps } = props;
@@ -16,8 +16,10 @@ export default function CardWidget(props: Props) {
       {...restProps}
     >
       <div className="d-flex px-3 pt-2">
-        {title}
-        <span className="ms-auto d-flex gap-3">{toolbar}</span>
+        <span className=" text-opacity-75">{title}</span>
+        <span className="ms-auto d-flex gap-3 align-items-center">
+          {toolbar}
+        </span>
       </div>
       {children}
     </div>

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { useEntelStore } from "../../../store/store";
+import { useAppStore } from "../../../store/store";
 import ConfigBar from "./ConfigBar";
 
 export default function ConfigBarContainer() {
@@ -14,7 +14,7 @@ export default function ConfigBarContainer() {
     [instalValue]
   );
 
-  const getReservorios = useEntelStore((state) => state.getReservorios);
+  const getReservorios = useAppStore((state) => state.getReservorios);
 
   const options = useMemo(
     () => [

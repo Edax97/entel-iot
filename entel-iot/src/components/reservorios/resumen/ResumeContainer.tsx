@@ -6,11 +6,11 @@ export default function ResumeContainer() {
   const devices = useMemo(() => 3, []);
   const alerts = useMemo(() => 1, []);
   return (
-    <div className="d-flex flex-row flex-xl-column gap-4">
-      <div style={{ width: "300px" }}>
+    <div className="row gy-4">
+      <div className="col-6 col-xl-12">
         <Devices devices={devices} />
       </div>
-      <div style={{ width: "300px" }}>
+      <div className="col-6 col-xl-12">
         <Alerts alerts={alerts} />
       </div>
     </div>

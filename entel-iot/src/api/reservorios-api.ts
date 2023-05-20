@@ -1,5 +1,17 @@
+import { ReservorioLevelType } from "../store/reservorios-store";
+
 const reservoriosURL = "data-api/reservorios.json";
-export const getReservoriosAPI = async () => {
-  const data = await fetch(reservoriosURL);
-  return data.json();
-};
+
+interface DataReservoriosType {
+  success: boolean;
+  datos: ReservorioLevelType[];
+  error: string;
+}
+
+export const getReservoriosAPI = () =>
+  fetch(reservoriosURL)
+    .then<DataReservoriosType>((data) => data.json())
+    .then(({ success, datos }) => {
+      if (!success) throw Error("API error");
+      return datos;
+    });
