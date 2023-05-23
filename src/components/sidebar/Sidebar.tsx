@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
   sidebarOpen: boolean;
-  setSidebarOpen: any;
+  setSidebarOpen: (a: any) => void;
 }
 function Sidebar(props: Props) {
   const { sidebarOpen, setSidebarOpen } = props;
@@ -14,19 +14,17 @@ function Sidebar(props: Props) {
   };
 
   return (
-    <div className="Container">
-      <button className="Sidebarbutton" onClick={ModSidebaropen}>
-        <i className="bi bi-arrow-left-circle-fill"></i>
+    <div className="Container bg-primary pt-4">
+      <button
+        className="Sidebarbutton bg-dark text-white"
+        onClick={ModSidebaropen}
+      >
+        <i
+          className={`bi bi-chevron-double-${
+            sidebarOpen ? "left" : "right"
+          } fs-6`}
+        ></i>
       </button>
-      <div className="Logocontent">
-        <div className="imgcontent">
-          <img
-            src={""}
-            style={{ marginLeft: "20px", height: "1.75rem", marginTop: "-8px" }}
-            alt=""
-          />
-        </div>
-      </div>
       {linksArray.map(({ icon, label, to }) => (
         <div className="LinkContainer" key={label}>
           <NavLink
@@ -58,7 +56,7 @@ function Sidebar(props: Props) {
 const linksArray = [
   {
     label: "Escritorio",
-    icon: <i className="bi bi-house-dash-fill"></i>,
+    icon: <i className="bi bi-display"></i>,
     to: "/escritorio",
   },
   {
@@ -68,7 +66,7 @@ const linksArray = [
   },
   {
     label: "Configuracion",
-    icon: <i className="bi bi-gear-wide-connected"></i>,
+    icon: <i className="bi bi-gear"></i>,
     to: "/configuracion",
   },
   {

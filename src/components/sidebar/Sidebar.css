@@ -1,8 +1,5 @@
 .Container {
-  background: rgb(31, 30, 119);
-  color: #202020;
   position: sticky;
-  padding-top: 20px;
 }
 
 .Sidebarbutton {
@@ -12,29 +9,19 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 4px rgb(230, 230, 230), 0 0 7px rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s;
-  transform: rotate(180deg);
   border: none;
   letter-spacing: inherit;
-  color: inherit;
+
   font-size: inherit;
   text-align: inherit;
   padding: 0;
   font-family: inherit;
   outline: none;
-}
-
-.Logocontent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 24px;
 }
 
 .LinkContainer {
@@ -64,18 +51,6 @@
 
 i {
   font-size: 20px;
-}
-
-.imgcontent {
-  display: flex;
-  cursor: pointer;
-  transition: all 0.3s;
-  scale: 1.5;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 .Divider {

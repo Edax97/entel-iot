@@ -11,7 +11,7 @@ export default function Reservorios() {
   const getResGraficas = useAppStore((state) => state.getResGraficas);
   useEffect(() => {
     getReservorios();
-    getResGraficas([moverFecha(new Date(), 0), new Date()]);
+    getResGraficas([moverFecha(new Date(), -2), moverFecha(new Date(), -2)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
