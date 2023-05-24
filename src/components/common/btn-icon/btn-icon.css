@@ -1,6 +1,7 @@
 .btn-icon {
   border-style: none;
   border-radius: 50%;
+  background-color: inherit;
 }
 
 .icon-container {
