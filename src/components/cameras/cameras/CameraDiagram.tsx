@@ -46,7 +46,7 @@ export default function CameraDiagram(props: Props) {
             : { top: y + 1.2 * props.radius, transform: "translate(-50%)" };
 
         return (
-          <>
+          <div key={dev.dis_id}>
             {dev.dis_temp > dev.dis_maxt ||
             dev.dis_temp < dev.dis_mint ||
             dev.dis_hume > dev.dis_maxh ||
@@ -92,7 +92,7 @@ export default function CameraDiagram(props: Props) {
             >
               {dev.dis_sensor_id}
             </span>
-          </>
+          </div>
         );
       })}
     </div>

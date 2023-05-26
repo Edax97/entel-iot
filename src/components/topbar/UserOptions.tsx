@@ -2,6 +2,7 @@ import React from "react";
 
 interface Props {
   userName: string;
+  onLogout: () => void;
 }
 export default function UserOptions(props: Props) {
   return (
@@ -18,7 +19,9 @@ export default function UserOptions(props: Props) {
       </button>
       <ul className="dropdown-menu" aria-labelledby="account-dropdown">
         <li>
-          <button className="dropdown-item py-1">Log out</button>
+          <button className="dropdown-item py-1" onClick={props.onLogout}>
+            Log out
+          </button>
         </li>
       </ul>
     </div>

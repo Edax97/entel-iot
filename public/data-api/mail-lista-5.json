@@ -1,0 +1,23 @@
+{
+  "status": true,
+  "totalRegistros": 3,
+  "listaDatos": [
+    {
+      "correo_id": 19,
+      "correo_master": "5",
+      "correo_nombre": "Jose Vasquez Saenz",
+      "correo_email": "jvasquez@altamarfoods.com",
+      "correo_numero": null,
+      "correo_opt": 0
+    },
+    {
+      "correo_id": 20,
+      "correo_master": "5",
+      "correo_nombre": "Reywis",
+      "correo_email": "reywisveliz@gmail.com",
+      "correo_numero": null,
+      "correo_opt": 0
+    }
+  ],
+  "mensaje": "Se proceso peticion"
+}

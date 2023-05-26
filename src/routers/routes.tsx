@@ -12,6 +12,7 @@ import SignIn from "../pages/Signin";
 function MyRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<SignIn />}></Route>
       <Route path="/" element={<Layout />}>
         <Route path="escritorio" element={<Escritorio />}></Route>
         <Route path="reservorios" element={<Reservorios />}></Route>
@@ -20,7 +21,6 @@ function MyRoutes() {
         <Route path="graficas" element={<Graficas />}></Route>
         <Route path="alertas" element={<Alertas />}></Route>
       </Route>
-      <Route path="/login" element={<SignIn />}></Route>
     </Routes>
   );
 }

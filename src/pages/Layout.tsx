@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
 import TopBarContainer from "../components/topbar/TopBarContainer";
+import { useAppStore } from "../store/store";
 import "./layout.scss";
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const logout = useAppStore((state) => state.logout);
+
   return (
     <main>
       <TopBarContainer />
@@ -16,7 +20,11 @@ export default function Layout() {
             minHeight: "800px",
           }}
         >
-          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <Sidebar
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+            onLogout={() => logout()}
+          />
         </div>
         <Outlet />
       </div>

@@ -13,12 +13,12 @@ export default function CameraListContainer() {
   if (loading) return <Loading className="my-5" />;
   if (error) return <ErrorMessage message="Error al cargar la data." />;
   return (
-    <div className="row gy-4 justify-content-center">
+    <div className="row gy-4 ">
       {cameraList.map((camera) => (
         <div
           key={camera.loc_id}
           className={`col-12 ${
-            camera.loc_devices.length === 1 ? "col-xl-5" : "col-xl-6"
+            camera.loc_devices.length === 1 ? "col-xl-6" : "col-xl-6"
           }`}
         >
           {camera.loc_devices.length === 1 ? (

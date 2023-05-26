@@ -1,13 +1,13 @@
 .sidebarState {
   display: grid;
-  grid-template-columns: 80px auto;
+  grid-template-columns: max-content auto;
   background: #edf3fb;
   transition: all 0.3s;
   height: 300vh;
 }
 
 .active {
-  grid-template-columns: 230px auto;
+  grid-template-columns: max-content auto;
 }
 
 @media screen and (min-width: 768px) {

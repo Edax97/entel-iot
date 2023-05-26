@@ -42,7 +42,7 @@ export const getCameraDevicesAPI = async (codigo_m: string) => {
 
   const areaDevicesList: CameraDevicesType[] = await Promise.all(
     areaList.map((area) =>
-      getDispostivosAPI(codigo_m, `${area.loc_id}`).then((devices) => ({
+      getDispostivosAPI(codigo_m).then((devices) => ({
         ...area,
         loc_devices: devices,
       }))

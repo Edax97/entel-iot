@@ -1,4 +1,6 @@
-const dispositivosURL = "data-api/devices";
+import { API } from "./api";
+import { postMethod } from "./methods";
+
 export interface DispositivoAPIType {
   dis_id: number;
   dis_mas: number;
@@ -22,10 +24,10 @@ export interface DispositivosDataType {
   mensaje: string;
 }
 
-export const getDispostivosAPI = (codigo_m: string, loc_codigo: string) =>
-  fetch(`${dispositivosURL}-${codigo_m}-${loc_codigo}.json`)
-    .then<DispositivosDataType>((data) => data.json())
-    .then(({ status, listaDatos }) => {
-      if (!status) throw Error("API Error");
-      return listaDatos;
-    });
+export const getDispostivosAPI = (loc_codigo: string) =>
+  postMethod<DispositivosDataType>(
+    `${API}/api/Consultas/dispositivoslista?codigo=${loc_codigo}&tipo=0`
+  ).then(({ status, listaDatos }) => {
+    if (!status) throw Error("API Error");
+    return listaDatos;
+  });
