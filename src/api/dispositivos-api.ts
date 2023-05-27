@@ -1,10 +1,11 @@
 import { API } from "./api";
-import { postMethod } from "./methods";
+import { postMethod, putMethod } from "./methods";
 
 export interface DispositivoAPIType {
   dis_id: number;
   dis_mas: number;
   dis_loc: string;
+  dis_locacion: string;
   dis_sensor_id: string;
   dis_nom: string;
   dis_maxt: string;
@@ -25,7 +26,6 @@ export interface DispositivosDataType {
   listaDatos: DispositivoAPIType[];
   mensaje: string;
 }
-
 export const getDispostivosAPI = (loc_codigo: string) =>
   postMethod<DispositivosDataType>(
     `${API}/api/Consultas/dispositivoslista?codigo=${loc_codigo}&tipo=0`
@@ -33,3 +33,27 @@ export const getDispostivosAPI = (loc_codigo: string) =>
     if (!status) throw Error("API Error");
     return listaDatos;
   });
+
+export const getAllDevicesAPI = (devicesAPI: string, codigo_m: string) =>
+  postMethod<DispositivosDataType>(
+    `${API}/api/${devicesAPI}?codigo=${codigo_m}&tipo=1`
+  ).then(({ status, totalRegistros, listaDatos }) => {
+    if (!status) throw Error("API Error");
+    return { totalRegistros, listaDatos };
+  });
+
+export interface DispositivoUpdateType {
+  [key: string]: string;
+}
+interface UpdateRes {
+  rpta: number;
+  mensaje: string;
+}
+export const updateDispositivoAPI = (dis: DispositivoUpdateType) => {
+  const query = Object.keys(dis)
+    .map((key) => `${key}=${dis[key]}`)
+    .join("&");
+  return putMethod<UpdateRes>(
+    `${API}/api/Consultas/actualizardispositivo?${query}`
+  );
+};

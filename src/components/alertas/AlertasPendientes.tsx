@@ -4,7 +4,7 @@ import BtnIcon from "../common/btn-icon/BtnIcon";
 import CardWidget from "../common/card-widget/CardWidget";
 import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
-import Paginacion from "./Paginacion";
+import Paginacion from "../common/paginacion/Paginacion";
 import { FaExpand as Expand } from "react-icons/fa";
 import { SlOptions as Options } from "react-icons/sl";
 import AlertasPageContainer from "./AlertasPageContainer";

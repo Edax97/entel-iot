@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import AreasContainer from "../components/config/areas/AreasContainer";
+import DispositivosContainer from "../components/config/dispositivos/DispositivosContainer";
 import MailConfigContainer from "../components/config/mails/MailConfigContainer";
 import { useAppStore } from "../store/store";
 
@@ -11,12 +13,16 @@ export default function Configuracion() {
   }, []);
 
   return (
-    <div className="container my-5">
+    <div className="container-fluid my-5 px-4">
       <div>
         <MailConfigContainer />
       </div>
-      <div className="mt-4">CONFIG DISPOSITIVOS</div>
-      <div className="mt-4">CONFIG AREAS</div>
+      <div className="mt-4">
+        <DispositivosContainer />
+      </div>
+      <div className="mt-4">
+        <AreasContainer />
+      </div>
     </div>
   );
 }

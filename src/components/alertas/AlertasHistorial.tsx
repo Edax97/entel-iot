@@ -5,7 +5,7 @@ import CardWidget from "../common/card-widget/CardWidget";
 import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
 import AlertasPageContainer from "./AlertasPageContainer";
-import Paginacion from "./Paginacion";
+import Paginacion from "../common/paginacion/Paginacion";
 import { FaExpand as Expand } from "react-icons/fa";
 import { SlOptions as Options } from "react-icons/sl";
 

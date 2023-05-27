@@ -1,8 +1,8 @@
 import { API } from "./api";
 import { DispositivoAPIType, getDispostivosAPI } from "./dispositivos-api";
-import { getMethod } from "./methods";
+import { getMethod, putMethod } from "./methods";
 
-interface CameraAPIType {
+export interface CameraAPIType {
   loc_id: number;
   loc_codigo_m: string;
   loc_nombre: string;
@@ -47,4 +47,20 @@ export const getCameraDevicesAPI = async (codigo_m: string) => {
     )
   );
   return areaDevicesList;
+};
+
+export interface AreaUpdateType {
+  [key: string]: string;
+}
+interface UpdateRes {
+  rpta: number;
+  mensaje: string;
+}
+export const updateAreaAPI = (area: AreaUpdateType) => {
+  const query = Object.keys(area)
+    .map((key) => `${key}=${area[key]}`)
+    .join("&");
+  return putMethod<UpdateRes>(
+    `${API}/api/Consultas/actualizarlocacion?${query}`
+  );
 };

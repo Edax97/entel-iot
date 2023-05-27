@@ -40,8 +40,23 @@ export const deleteMethod = async <T>(url: string, body?: any) => {
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${user?.accessToken}`,
-      AccessControlAllowOrigin: "*",
+      Authorization: `Bearer ${user?.accessToken}`
+    },
+    body: JSON.stringify(body),
+  }).then<T>((data) => data.json());
+
+  return response;
+};
+
+export const putMethod = async <T>(url: string, body?: any) => {
+  const user = getLocal<UserAPIType>("user");
+
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${user?.accessToken}`
     },
     body: JSON.stringify(body),
   }).then<T>((data) => data.json());

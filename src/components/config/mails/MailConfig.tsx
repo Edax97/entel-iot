@@ -44,20 +44,22 @@ export default function MailConfig(props: Props) {
           </div>
           <div className="mt-3">
             <input
-              className="form-control"
+              className="form-control bg-light bg-opacity-25"
               type="text"
               placeholder="Ingrese un nombre"
               value={props.correoName}
               onChange={(e) => props.setCorreoName(e.target.value)}
+              required
             />
           </div>
           <div className="mt-3">
             <input
-              className="form-control"
-              type="text"
+              className="form-control bg-light bg-opacity-25"
+              type="email"
               placeholder="Ingrese una dirección válida"
               value={props.correoEmail}
               onChange={(e) => props.setCorreoEmail(e.target.value)}
+              required
             />
           </div>
           <button className="my-3 btn btn-primary">Añadir</button>
