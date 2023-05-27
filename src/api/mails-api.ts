@@ -1,4 +1,5 @@
-const mailsURL = "data-api/mail-lista";
+import { API } from "./api";
+import { deleteMethod, getMethod, postMethod } from "./methods";
 
 export interface MailAPIType {
   correo_id: number;
@@ -17,33 +18,37 @@ interface MailsDataType {
 }
 
 export const getMailsAPI = (codigo_m: string) =>
-  fetch(`${mailsURL}-${codigo_m}.json`)
-    .then<MailsDataType>((data) => data.json())
-    .then(({ status, listaDatos }) => {
-      if (!status) throw Error("API Error");
-      return listaDatos;
-    });
+  getMethod<MailsDataType>(
+    `${API}/api/Consultas/correolista?codigo=${codigo_m}`
+  ).then(({ status, listaDatos }) => {
+    if (!status) throw Error("API Error");
+    return listaDatos;
+  });
 
+interface DeleteResType {
+  rpta: number;
+  mensaje: string;
+}
 export const deleteMailAPI = async (id: string) => {
-  const response = { respuesta: 1, mensaje: "Eliminado" };
-  if (response.respuesta !== 1) throw Error("No se pudo eliminar.");
+  const response = await deleteMethod<DeleteResType>(
+    `${API}/api/Consultas/eliminarcorreo?codigo=${id}`
+  );
+  if (response.rpta !== 1) throw Error("No se pudo eliminar.");
   return response;
 };
 
+interface AddResType {
+  rpta: number;
+  mensaje: string;
+}
 export const addMailAPI = async (
   nombre: string,
   email: string,
   codigo_m: string
 ) => {
-  const response = { respuesta: 1, mensaje: "Añadido" };
-  if (response.respuesta !== 1) throw Error("No se pudo añadir.");
-  const added: MailAPIType = {
-    correo_id: 1,
-    correo_master: codigo_m,
-    correo_nombre: nombre,
-    correo_email: email,
-    correo_numero: null,
-    correo_opt: 0,
-  };
-  return added;
+  const response = await postMethod<AddResType>(
+    `${API}/api/Consultas/agregarcorreo?codigo=${codigo_m}&nombre=${nombre}&email=${email}`
+  );
+  if (response.rpta !== 1) throw Error("No se pudo añadir.");
+  return response;
 };

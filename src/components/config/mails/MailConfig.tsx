@@ -37,7 +37,7 @@ export default function MailConfig(props: Props) {
         </>
       }
     >
-      <div className="p-4 pb-5 d-flex justify-content-around">
+      <div className="p-4 pb-5 d-flex gap-5">
         <form action="#" onSubmit={onSubmit}>
           <div className="text-secondary">
             Correo al que le llegará automáticamente el reporte diario.
@@ -62,8 +62,8 @@ export default function MailConfig(props: Props) {
           </div>
           <button className="my-3 btn btn-primary">Añadir</button>
         </form>
-        <div>
-          <table className="table table-light">
+        <div className="ms-auto me-3">
+          <table className="table" style={{ fontSize: "small" }}>
             <thead>
               <tr>
                 <th className="px-4">Nombre</th>
@@ -71,19 +71,19 @@ export default function MailConfig(props: Props) {
                 <th className="px-4">Acción</th>
               </tr>
             </thead>
-            <tbody className="text-dark text-opacity-75 fs-6">
+            <tbody className="text-dark text-opacity-75">
               {props.mailList.map((mail) => (
-                <tr>
-                  <th className="px-4">{mail.correo_nombre}</th>
-                  <th className="px-4">{mail.correo_email}</th>
-                  <th className="px-4">
+                <tr key={mail.correo_id}>
+                  <td className="px-4">{mail.correo_nombre}</td>
+                  <td className="px-4">{mail.correo_email}</td>
+                  <td className="px-4">
                     <button
                       className="btn btn-outline-danger btn-sm"
                       onClick={() => props.onDeleteMail(`${mail.correo_id}`)}
                     >
                       Eliminar
                     </button>
-                  </th>
+                  </td>
                 </tr>
               ))}
             </tbody>

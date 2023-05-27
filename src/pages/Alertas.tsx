@@ -1,13 +1,16 @@
 import React from "react";
-import AlertasPendientesContainer from "../components/alertas/AlertasPendientesContainer";
+import AlertasHistorial from "../components/alertas/AlertasHistorial";
+import AlertasPendientes from "../components/alertas/AlertasPendientes";
 
 function Alertas() {
   return (
     <div className="container my-5">
       <div>
-        <AlertasPendientesContainer />
+        <AlertasPendientes />
       </div>
-      <div className="mt-4">ALERTAS HISTORIAL</div>
+      <div className="mt-4">
+        <AlertasHistorial />
+      </div>
     </div>
   );
 }

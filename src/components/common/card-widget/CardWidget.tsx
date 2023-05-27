@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import "./card-widget.scss";
 
 interface Props {
   title?: string;
@@ -10,9 +11,7 @@ export default function CardWidget(props: Props) {
   const { title, toolbar, children, className, ...restProps } = props;
   return (
     <div
-      className={`${
-        className || "bg-secondary bg-opacity-10"
-      }  card border-0 shadow  `}
+      className={`${className || "bg-gray"}  card border-0 shadow  `}
       {...restProps}
     >
       <div className="d-flex ps-3 pe-2 pt-2">

@@ -15,7 +15,7 @@ export interface MailsStoreType {
   deleteMail: (id: string) => void;
   deleteMailLoading: boolean;
   deleteMailError: boolean;
-  addMail: (nombre: string, email: string, codigo: string) => void;
+  addMail: (nombre: string, email: string, codigo: string) => any;
   addMailLoading: boolean;
   addMailError: boolean;
   addMailSuccess: boolean;
@@ -47,13 +47,12 @@ export const mailsStore: StateCreator<StoreType, [], [], MailsStoreType> = (
   deleteMailError: false,
   addMail: (nombre: string, email: string, codigo: string) => {
     set({ addMailLoading: true, addMailError: false, addMailSuccess: false });
-    addMailAPI(nombre, email, codigo)
-      .then((added) =>
-        set(({ mailList }) => ({
+    return addMailAPI(nombre, email, codigo)
+      .then(() =>
+        set({
           addMailLoading: false,
           addMailSuccess: true,
-          mailList: [...mailList, added],
-        }))
+        })
       )
       .catch(() => set({ addMailLoading: false, addMailError: true }));
   },
