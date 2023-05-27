@@ -8,8 +8,8 @@ export default function Escritorio() {
   const getCameras = useAppStore((state) => state.getCameras);
 
   useEffect(() => {
-    getResumen();
-    getCameras("1");
+    getResumen("5");
+    getCameras("5");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

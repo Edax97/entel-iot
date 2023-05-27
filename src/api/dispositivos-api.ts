@@ -13,8 +13,10 @@ export interface DispositivoAPIType {
   dis_minh: string;
   dis_status: string;
   dis_last_up: string;
-  dis_temp: string;
-  dis_hume: string;
+  loc_nom: string;
+  temp: number;
+  hum: number;
+  bat: number;
 }
 
 export interface DispositivosDataType {

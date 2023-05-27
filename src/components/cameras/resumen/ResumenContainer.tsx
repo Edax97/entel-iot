@@ -9,9 +9,9 @@ export default function ResumenContainer() {
   const resumenLoading = useAppStore((state) => state.resumenLoading);
   const resumenError = useAppStore((state) => state.resumenError);
 
-  if (resumenLoading || !resumen) return <Loading className="my-5" />;
+  if (resumenLoading) return <Loading className="my-5" />;
 
-  if (resumenError)
+  if (resumenError || !resumen)
     return <ErrorMessage message="Error al cargar los datos." />;
   return (
     <div className="row gy-4">

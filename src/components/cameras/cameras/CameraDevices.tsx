@@ -13,13 +13,13 @@ interface Props {
 export default function CameraDevices({ cameraName, deviceList }: Props) {
   const tempPromedio = useMemo(
     () =>
-      deviceList.reduce<number>((temp, dev) => temp + +dev.dis_temp, 0) /
+      deviceList.reduce<number>((temp, dev) => temp + +dev.temp, 0) /
       deviceList.length,
     [deviceList]
   );
   const humePromedio = useMemo(
     () =>
-      deviceList.reduce<number>((temp, dev) => temp + +dev.dis_hume, 0) /
+      deviceList.reduce<number>((temp, dev) => temp + +dev.hum, 0) /
       deviceList.length,
     [deviceList]
   );

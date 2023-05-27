@@ -1,6 +1,6 @@
+import { API } from "./api";
 import { DispositivoAPIType, getDispostivosAPI } from "./dispositivos-api";
-
-const cameraAreasURL = "data-api/camera-areas";
+import { getMethod } from "./methods";
 
 interface CameraAPIType {
   loc_id: number;
@@ -28,21 +28,19 @@ export interface CamerasDataType {
 }
 
 export const getCamerasAPI = (codigo_m: string) =>
-  fetch(`${cameraAreasURL}-${codigo_m}.json`)
-    .then<CamerasDataType>((data) => {
-      return data.json();
-    })
-    .then(({ status, listaDatos }) => {
-      if (!status) throw Error("API Error");
-      return listaDatos;
-    });
+  getMethod<CamerasDataType>(
+    `${API}/api/Consultas/locacionlista?codigo=${codigo_m}`
+  ).then(({ status, listaDatos }) => {
+    if (!status) throw Error("API Error");
+    return listaDatos;
+  });
 
 export const getCameraDevicesAPI = async (codigo_m: string) => {
   const areaList = await getCamerasAPI(codigo_m);
 
   const areaDevicesList: CameraDevicesType[] = await Promise.all(
     areaList.map((area) =>
-      getDispostivosAPI(codigo_m).then((devices) => ({
+      getDispostivosAPI(`${area.loc_id}`).then((devices) => ({
         ...area,
         loc_devices: devices,
       }))

@@ -16,7 +16,7 @@ export const getMethod = async <T>(url: string) => {
   return response;
 };
 
-export const postMethod = async <T>(url: string) => {
+export const postMethod = async <T>(url: string, body?: any) => {
   const user = getLocal<UserAPIType>("user");
 
   const response = await fetch(url, {
@@ -26,6 +26,7 @@ export const postMethod = async <T>(url: string) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${user?.accessToken}`,
     },
+    body: JSON.stringify(body),
   }).then<T>((data) => data.json());
 
   return response;

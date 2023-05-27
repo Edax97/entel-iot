@@ -26,25 +26,25 @@ export default function CameraOneDevice({ cameraName, device }: Props) {
         </>
       }
     >
-      <div className="d-flex justify-content-center align-items-center gap-3 m-4 mb-5">
-        <div className="d-flex flex-column gap-1 align-items-end">
+      <div className="d-flex align-items-center gap-3 m-4 mb-5">
+        <div className="d-flex gap-3 align-items-end">
           <div className="d-flex align-items-center">
-            {device.dis_temp} °C
+            {device.temp.toFixed(1)} °C
             <i className="ms-1 fs-4 bi bi-thermometer-half text-secondary"></i>
           </div>
           <div className="d-flex align-items-center">
-            {device.dis_hume} %
+            {device.hum.toFixed(1)} %
             <i className="ms-1 fs-4 bi bi-droplet-half text-secondary"></i>
           </div>
           <div className="d-flex align-items-center">
-            {device.dis_hume} %
+            {device.hum.toFixed(1)} %
             <i className="ms-1 fs-4 bi bi-battery-half text-secondary"></i>
           </div>
         </div>
-        {device.dis_temp > device.dis_maxt ||
-        device.dis_temp < device.dis_mint ||
-        device.dis_hume > device.dis_maxh ||
-        device.dis_hume < device.dis_minh ? (
+        {device.temp > +device.dis_maxt ||
+        device.temp < +device.dis_mint ||
+        device.hum > +device.dis_maxh ||
+        device.hum < +device.dis_minh ? (
           <BtnRed width={48} height={48} />
         ) : (
           <BtnGreen width={48} height={48} />

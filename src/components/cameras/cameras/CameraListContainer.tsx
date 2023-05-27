@@ -18,7 +18,7 @@ export default function CameraListContainer() {
         <div
           key={camera.loc_id}
           className={`col-12 ${
-            camera.loc_devices.length === 1 ? "col-xl-6" : "col-xl-6"
+            camera.loc_devices.length === 1 ? "" : "col-xl-6"
           }`}
         >
           {camera.loc_devices.length === 1 ? (

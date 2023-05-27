@@ -47,10 +47,10 @@ export default function CameraDiagram(props: Props) {
 
         return (
           <div key={dev.dis_id}>
-            {dev.dis_temp > dev.dis_maxt ||
-            dev.dis_temp < dev.dis_mint ||
-            dev.dis_hume > dev.dis_maxh ||
-            dev.dis_hume < dev.dis_minh ? (
+            {dev.temp > +dev.dis_maxt ||
+            dev.temp < +dev.dis_mint ||
+            dev.hum > +dev.dis_maxh ||
+            dev.hum < +dev.dis_minh ? (
               <BtnRed style={btnStyle} />
             ) : (
               <BtnGreen style={btnStyle} />
@@ -69,15 +69,15 @@ export default function CameraDiagram(props: Props) {
               }}
             >
               <div className="d-flex align-items-center">
-                <span>{dev.dis_temp} °C</span>
+                <span>{dev.temp.toFixed(1)} °C</span>
                 <i className="ms-1 fs-6 bi bi-thermometer-half text-secondary"></i>
               </div>
               <div className="d-flex align-items-center">
-                <span>{dev.dis_hume} %</span>
+                <span>{dev.hum.toFixed(1)} %</span>
                 <i className="ms-1 fs-6 bi bi-droplet-half text-secondary"></i>
               </div>
               <div className="d-flex align-items-center">
-                <span>{dev.dis_hume} %</span>
+                <span>{dev.hum.toFixed(1)} %</span>
                 <i className="ms-1 fs-6 bi bi-battery-half text-secondary"></i>
               </div>
             </div>
