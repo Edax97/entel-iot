@@ -15,7 +15,7 @@ export default function ResumenContainer() {
     return <ErrorMessage message="Error al cargar los datos." />;
   return (
     <div className="row gy-4">
-      <div className="col-6 col-lg-4 col-xl-3">
+      <div className="col-12 col-md-6 col-xl-3">
         <CardResumeDetails
           titleCounter="Total de áreas"
           className="bg-success bg-opacity-50"
@@ -24,7 +24,7 @@ export default function ResumenContainer() {
           to="/configuracion"
         />
       </div>
-      <div className="col-6 col-lg-4 col-xl-3">
+      <div className="col-12 col-md-6 col-xl-3">
         <CardResumeDetails
           titleCounter="Dispositivos"
           className="bg-info bg-opacity-50"
@@ -33,7 +33,7 @@ export default function ResumenContainer() {
           to="/configuracion"
         />
       </div>
-      <div className="col-6 col-lg-4 col-xl-3">
+      <div className="col-12 col-md-6 col-xl-3">
         <CardResumeDetails
           titleCounter="Alertas"
           className="bg-danger bg-opacity-50"
@@ -42,7 +42,7 @@ export default function ResumenContainer() {
           to="/alertas"
         />
       </div>
-      <div className="col-6 col-lg-4 col-xl-3">
+      <div className="col-12 col-md-6 col-xl-3">
         <CardResumeDetails
           titleCounter="Gráficas"
           className=" bg-warning bg-opacity-50"
