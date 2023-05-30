@@ -19,6 +19,8 @@ interface Props {
 export default function MailConfig(props: Props) {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    //Validation
+    if (props.correoEmail.length > 100 || props.correoName.length > 50) return;
     props.onAddMail(props.correoName, props.correoEmail);
   };
 
@@ -38,7 +40,7 @@ export default function MailConfig(props: Props) {
       }
     >
       <div className="p-4 pb-5 d-flex gap-5">
-        <form action="#" onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
           <div className="text-secondary">
             Correo al que le llegará automáticamente el reporte diario.
           </div>
@@ -56,7 +58,7 @@ export default function MailConfig(props: Props) {
             <input
               className="form-control bg-light bg-opacity-25"
               type="email"
-              placeholder="Ingrese una dirección válida"
+              placeholder="Ingrese un correo válido"
               value={props.correoEmail}
               onChange={(e) => props.setCorreoEmail(e.target.value)}
               required

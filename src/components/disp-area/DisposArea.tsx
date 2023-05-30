@@ -7,7 +7,7 @@ interface Props {
   dispos: DispositivoAPIType[];
 }
 
-const radius = 24;
+const radius = 20;
 const btnStyle: CSSProperties = { width: 2 * radius, height: 2 * radius };
 
 export default function DisposArea(props: Props) {

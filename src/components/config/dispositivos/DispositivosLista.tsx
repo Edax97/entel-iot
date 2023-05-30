@@ -15,7 +15,8 @@ export default function DispositivosLista(props: Props) {
 
   const updateDispositivos = useCallback(
     (id: number, key: string, value: string) => {
-      if (value.length > 10 || value.length === 0) return;
+      //Validation
+      if (value.length > 50 || value.length === 0) return;
       setDisLista((devices) =>
         devices.map((d) => {
           if (d.dis_id !== id) return d;

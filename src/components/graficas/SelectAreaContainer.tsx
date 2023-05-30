@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useAreasState } from "../../api-state/useAreasState";
 import { useAreaGraficaContext } from "../../store/AreaGraficaProvider";
+import { useAppStore } from "../../store/store";
 import SelectArea, { SelectType } from "./SelectArea";
 
 export default function SelectAreaContainer() {
+  const id = useAppStore((state) => state.user?.id);
   const { setCurrentArea } = useAreaGraficaContext();
-  const { areaLista } = useAreasState("5");
+  const { areaLista } = useAreasState(`${id}`);
 
   const options = useMemo<SelectType[]>(() => {
     return areaLista.map((a) => ({ value: a.loc_id, label: a.loc_nombre }));

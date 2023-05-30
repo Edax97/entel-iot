@@ -8,10 +8,8 @@ function Graficas() {
   return (
     <AreaGraficaProvider>
       <div className="container-fluid p-5">
-        <div>
+        <div className="d-flex gap-4 flex-wrap">
           <SelectAreaContainer />
-        </div>
-        <div className="mt-3">
           <SelectRangeContainer />
         </div>
         <div className="mt-4">

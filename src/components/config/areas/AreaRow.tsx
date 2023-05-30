@@ -16,6 +16,8 @@ export default function AreaRow(props: Props) {
   const updateRow = useCallback(
     (key: string, value: string) => {
       if (!area) return;
+      //Validation
+      if (value.length > 50 || value.length === 0) return;
       setArea({ ...area, [key]: value });
     },
     [area]

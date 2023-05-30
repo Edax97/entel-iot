@@ -5,10 +5,11 @@ import MailConfigContainer from "../components/config/mails/MailConfigContainer"
 import { useAppStore } from "../store/store";
 
 export default function Configuracion() {
+  const id = useAppStore((state) => state.user?.id);
   const getMails = useAppStore((state) => state.getMails);
 
   useEffect(() => {
-    getMails("5");
+    getMails(`${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

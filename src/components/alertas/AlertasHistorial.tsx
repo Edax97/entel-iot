@@ -8,10 +8,12 @@ import AlertasPageContainer from "./AlertasPageContainer";
 import Paginacion from "../common/paginacion/Paginacion";
 import { FaExpand as Expand } from "react-icons/fa";
 import { SlOptions as Options } from "react-icons/sl";
+import { useAppStore } from "../../store/store";
 
 export default function AlertasHistorial() {
   const [page, setPage] = useState<number>(1);
-  const { paginas, error, isLoading } = useAlertasState("5", 1, "0");
+  const id = useAppStore((state) => state.user?.id);
+  const { paginas, error, isLoading } = useAlertasState(`${id}`, 1, "0");
 
   const prev = useCallback(
     (page: number) => {

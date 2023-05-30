@@ -5,6 +5,7 @@ import ErrorMessage from "../../common/message/ErrorMessage";
 import MailConfig from "./MailConfig";
 
 export default function MailConfigContainer() {
+  const id = useAppStore((state) => state.user?.id);
   const getMails = useAppStore((state) => state.getMails);
   const getLoading = useAppStore((state) => state.mailsLoading);
   const getError = useAppStore((state) => state.mailsError);
@@ -12,10 +13,10 @@ export default function MailConfigContainer() {
   const addMail = useAppStore((state) => state.addMail);
   const onAddMail = useCallback(
     (nombre: string, email: string) =>
-      addMail(nombre, email, "5").then(() => {
-        getMails("5");
+      addMail(nombre, email, `${id}`).then(() => {
+        getMails(`${id}`);
       }),
-    [addMail, getMails]
+    [addMail, getMails, id]
   );
   const addLoading = useAppStore((state) => state.addMailLoading);
   const addSuccess = useAppStore((state) => state.addMailSuccess);

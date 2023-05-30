@@ -38,24 +38,24 @@ export default function CameraDevices({ cameraName, deviceList }: Props) {
         </>
       }
     >
-      <div className="d-flex justify-content-around align-items-center m-4 mb-5">
+      <div className="d-flex justify-content-center align-items-center m-4 mb-5 gap-4">
         <div>
-          <CameraDiagram width={390} radius={12} deviceList={deviceList} />
+          <CameraDiagram width={370} radius={12} deviceList={deviceList} />
         </div>
         <div className="d-flex flex-column align-items-end">
           <div className="text-secondary" style={{ fontSize: "small" }}>
             Temperatura Promedio
           </div>
           <div className="d-flex align-items-center gap-2">
-            <span className="fs-4">{tempPromedio.toFixed(1)} °C</span>
-            <i className="fs-1 bi bi-thermometer-half text-danger"></i>
+            <span className="fs-5">{tempPromedio.toFixed(1)} °C</span>
+            <i className="fs-2 bi bi-thermometer-half text-danger"></i>
           </div>
           <div className="mt-3 text-secondary" style={{ fontSize: "small" }}>
             Humedad Promedio
           </div>
           <div className="d-flex align-items-center gap-2">
-            <span className="fs-4">{humePromedio.toFixed(1)} %</span>
-            <i className="fs-1 bi bi-droplet-half text-info"></i>
+            <span className="fs-5">{humePromedio.toFixed(1)} %</span>
+            <i className="fs-2 bi bi-droplet-half text-info"></i>
           </div>
         </div>
       </div>

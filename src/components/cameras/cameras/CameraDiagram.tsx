@@ -62,7 +62,7 @@ export default function CameraDiagram(props: Props) {
                 left: x - width_step,
                 height: height_step,
                 width: width_step,
-                fontSize: "small",
+                fontSize: "x-small",
                 lineHeight: 1.1,
                 padding: props.radius * 0.8,
                 ...boxStyle,

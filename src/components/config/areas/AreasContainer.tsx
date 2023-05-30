@@ -8,10 +8,14 @@ import BtnIcon from "../../common/btn-icon/BtnIcon";
 import Paginacion from "../../common/paginacion/Paginacion";
 import AreaLista from "./AreaLista";
 import { CameraAPIType, updateAreaAPI } from "../../../api/cameras-api";
+import { useAppStore } from "../../../store/store";
 const itemsPerPage = 10;
 
 export default function AreasContainer() {
-  const { areaLista, registros, error, isLoading, mutate } = useAreasState("5");
+  const id = useAppStore((state) => state.user?.id);
+  const { areaLista, registros, error, isLoading, mutate } = useAreasState(
+    `${id}`
+  );
   const [editError, setEditError] = useState(false);
 
   const [page, setPage] = useState(1);

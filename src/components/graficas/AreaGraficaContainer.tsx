@@ -5,6 +5,7 @@ import {
   useAreaGraficaAPI,
 } from "../../api-state/useAreaGraficaAPI";
 import { RangeT, useAreaGraficaContext } from "../../store/AreaGraficaProvider";
+import { useAppStore } from "../../store/store";
 import { moverFecha } from "../../utilities/date-utils";
 import { AccessorsType } from "../common/grafica/GraficaTemporal";
 import GraficoLeyendaComponent from "../common/grafica/GraficoLeyendaComponent";
@@ -12,10 +13,11 @@ import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
 
 export default function AreaGraficaContainer() {
+  const id = useAppStore((state) => state.user?.id);
   const { timeRange, currentArea } = useAreaGraficaContext();
   const [maxTimeRange, setMaxTimeRange] = useState<RangeT>(null);
   const { graficaVis, error, isLoading } = useAreaGraficaAPI(
-    "5",
+    `${id}`,
     currentArea?.id || "",
     maxTimeRange
   );

@@ -14,7 +14,7 @@ interface Props {
 export default function SelectArea(props: Props) {
   return (
     <div className="d-flex align-items-center gap-3">
-      <div>Área: </div>
+      <div className="opacity-75">Área: </div>
       <Select
         options={props.options}
         value={props.selected}

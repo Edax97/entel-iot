@@ -4,17 +4,18 @@ import ResumenContainer from "../components/cameras/resumen/ResumenContainer";
 import { useAppStore } from "../store/store";
 
 export default function Escritorio() {
+  const id = useAppStore((state) => state.user?.id);
   const getResumen = useAppStore((state) => state.getResumen);
   const getCameras = useAppStore((state) => state.getCameras);
 
   useEffect(() => {
-    getResumen("5");
-    getCameras("5");
+    getResumen(`${id}`);
+    getCameras(`${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="container my-5">
+    <div className="container-fluid py-4 py-lg-5 px-lg-5">
       <div>
         <ResumenContainer />
       </div>

@@ -11,12 +11,14 @@ import { useDispositivosState } from "../../../api-state/useDispositivosState";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import Paginacion from "../../common/paginacion/Paginacion";
+import { useAppStore } from "../../../store/store";
 
 const itemsPerPage = 10;
 
 export default function DispositivosContainer() {
+  const id = useAppStore((state) => state.user?.id);
   const { registros, dispositivoLista, error, isLoading, mutate } =
-    useDispositivosState("5");
+    useDispositivosState(`${id}`);
 
   const [editError, setEditError] = useState(false);
 

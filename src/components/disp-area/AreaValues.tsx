@@ -24,6 +24,8 @@ export default function AreaValues(props: Props) {
   const updateArea = useCallback(
     (key: string, value: string) => {
       if (!area) return;
+      //Validation
+      if (value.length > 50) return;
       setArea({ ...area, [key]: value });
     },
     [area]
