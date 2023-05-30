@@ -7,7 +7,7 @@ import AreaGraficaProvider from "../store/AreaGraficaProvider";
 function Graficas() {
   return (
     <AreaGraficaProvider>
-      <div className="container-fluid p-5">
+      <div className="container-fluid py-4 p-lg-5">
         <div className="d-flex gap-4 flex-wrap">
           <SelectAreaContainer />
           <SelectRangeContainer />

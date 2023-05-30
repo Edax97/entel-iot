@@ -72,7 +72,7 @@ const linksArray = [
   },
   {
     label: "Reportes",
-    icon: <i className="bi bi-receipt-cutoff"></i>,
+    icon: <i className="bi bi-file-earmark-text"></i>,
     to: "/reportes",
   },
   {

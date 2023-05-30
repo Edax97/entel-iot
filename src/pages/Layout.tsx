@@ -6,7 +6,7 @@ import { useAppStore } from "../store/store";
 import "./layout.scss";
 
 export default function Layout() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const logout = useAppStore((state) => state.logout);
 

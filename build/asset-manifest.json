@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cafb0a24.css",
+    "main.js": "/static/js/main.5c158b9b.js",
+    "static/js/787.d76fb95b.chunk.js": "/static/js/787.d76fb95b.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
+    "static/media/logo.png": "/static/media/logo.7d34f57aa42c2586b2d4.png",
+    "static/media/camera.svg": "/static/media/camera.0f5c86c75f168c6e767ffe480ae33d0c.svg",
+    "static/media/btn-red.svg": "/static/media/btn-red.2630768d286af6099cd820579ff207be.svg",
+    "static/media/btn-green.svg": "/static/media/btn-green.6ff6e3ee7ef9ff83c1c0f79d129a24eb.svg",
+    "index.html": "/index.html",
+    "static/media/water-top.svg": "/static/media/water-top.3db4113865caf6f5d827ba758dd4185b.svg",
+    "static/media/water-sensor.svg": "/static/media/water-sensor.c0c998f6883daec2ca27385dee30409f.svg",
+    "static/media/water-tank.svg": "/static/media/water-tank.c35240343f13eba35993e43299e76901.svg",
+    "main.cafb0a24.css.map": "/static/css/main.cafb0a24.css.map",
+    "main.5c158b9b.js.map": "/static/js/main.5c158b9b.js.map",
+    "787.d76fb95b.chunk.js.map": "/static/js/787.d76fb95b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cafb0a24.css",
+    "static/js/main.5c158b9b.js"
+  ]
+}

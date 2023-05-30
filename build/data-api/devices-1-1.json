@@ -1,0 +1,82 @@
+{
+  "status": true,
+  "totalRegistros": 5,
+  "listaDatos": [
+    {
+      "dis_id": 1,
+      "dis_mas": 1,
+      "dis_loc": "1",
+      "dis_sensor_id": "49:21:07:26:bc:gf",
+      "dis_nom": "S1-MP5",
+      "dis_maxt": "6",
+      "dis_mint": "4",
+      "dis_maxh": "95",
+      "dis_minh": "90",
+      "dis_status": "activo",
+      "dis_last_up": "2022-06-24 17:41:20",
+      "dis_temp": "5.2",
+      "dis_hume": "92"
+    },
+    {
+      "dis_id": 2,
+      "dis_mas": 1,
+      "dis_loc": "1",
+      "dis_sensor_id": "50:21:07:26:bc:gf",
+      "dis_nom": "S2-MP5",
+      "dis_maxt": "6",
+      "dis_mint": "4",
+      "dis_maxh": "95",
+      "dis_minh": "90",
+      "dis_status": "activo",
+      "dis_last_up": "2022-06-24 17:41:20",
+      "dis_temp": "5.4",
+      "dis_hume": "93"
+    },
+    {
+      "dis_id": 3,
+      "dis_mas": 1,
+      "dis_loc": "1",
+      "dis_sensor_id": "51:21:07:26:bc:gf",
+      "dis_nom": "S3-MP5",
+      "dis_maxt": "6",
+      "dis_mint": "4",
+      "dis_maxh": "95",
+      "dis_minh": "90",
+      "dis_status": "activo",
+      "dis_last_up": "2022-06-24 17:41:20",
+      "dis_temp": "5.2",
+      "dis_hume": "97"
+    },
+    {
+      "dis_id": 4,
+      "dis_mas": 1,
+      "dis_loc": "1",
+      "dis_sensor_id": "52:21:07:26:bc:gf",
+      "dis_nom": "S4-MP5",
+      "dis_maxt": "6",
+      "dis_mint": "4",
+      "dis_maxh": "95",
+      "dis_minh": "90",
+      "dis_status": "activo",
+      "dis_last_up": "2022-06-24 17:41:20",
+      "dis_temp": "7.2",
+      "dis_hume": "92"
+    },
+    {
+      "dis_id": 5,
+      "dis_mas": 1,
+      "dis_loc": "1",
+      "dis_sensor_id": "53:21:07:26:bc:gf",
+      "dis_nom": "S5-MP5",
+      "dis_maxt": "6",
+      "dis_mint": "4",
+      "dis_maxh": "95",
+      "dis_minh": "90",
+      "dis_status": "activo",
+      "dis_last_up": "2022-06-24 17:41:20",
+      "dis_temp": "5.2",
+      "dis_hume": "92"
+    }
+  ],
+  "mensaje": "Se proceso la petición."
+}
