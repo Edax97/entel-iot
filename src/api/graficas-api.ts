@@ -4,7 +4,7 @@ import { getMethod } from "./methods";
 interface DatumAPIType {
   reporte_fecha: string;
   reporte_sensor_id: string;
-  reporte_metricas_promedio: string;
+  reporte_metricas_prom: string;
 }
 
 interface HeaderType {

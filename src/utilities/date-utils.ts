@@ -1,3 +1,5 @@
+import { timeFormat } from "d3-time-format";
+
 export function moverFecha(d: Date, days: number) {
   let r = new Date(d);
   const dateUpdated = r.getDate() + days;
@@ -8,4 +10,11 @@ export function moverFecha(d: Date, days: number) {
 export function moverHours(d: Date, hours: number) {
   const result = d.getTime() + hours * 3600 * 1000;
   return new Date(result);
+}
+
+type RangeType = [Date, Date];
+export function extendRange(r: RangeType): RangeType {
+  const startDate = timeFormat("%Y-%m-%d")(r[0]);
+  const endDate = timeFormat("%Y-%m-%d")(moverFecha(r[1], 1));
+  return [new Date(startDate), new Date(endDate)];
 }

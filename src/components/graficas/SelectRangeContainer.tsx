@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { SingleValue } from "react-select";
-import { useAreaGraficaContext } from "../../store/AreaGraficaProvider";
+import { RangeT, useAreaGraficaContext } from "../../store/AreaGraficaProvider";
 import { moverFecha } from "../../utilities/date-utils";
-import SelectRangeComponent from "./SelectRangeComponent";
+import SelectRange from "./SelectRange";
 
 export type SinceType = { value: number; label: string };
 export type RangeType = { startDate: Date; endDate: Date } | null;
@@ -15,56 +15,51 @@ const sinceOptions: SinceType[] = [
 ];
 
 export default function SelectRangeContainer() {
-  const { timeRange } = useAreaGraficaContext();
+  const { timeRange, updateTimeRange } = useAreaGraficaContext();
 
-  const [tempRange, setTempRange] = useState<RangeType>(null);
+  const [tempRange, setTempRange] = useState<RangeT>(null);
   const [sinceSelected, setSinceSelected] = useState<SinceType>({
     value: 0,
     label: "Intervalo de ...",
   });
   const [validationError, setValidationError] = useState(false);
 
+  useEffect(() => {
+    updateTimeRange([moverFecha(new Date(), -14), new Date()]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    setTempRange(timeRange);
+  }, [timeRange]);
+
   const setStartDate = (startDate: any) => {
     if (!tempRange || !startDate) return;
     setValidationError(false);
-    setTempRange({ ...tempRange, startDate });
+    setTempRange([startDate, tempRange[1]]);
   };
   const setEndDate = (endDate: any) => {
     if (!tempRange || !endDate) return;
     setValidationError(false);
-    setTempRange({ ...tempRange, endDate });
+    setTempRange([tempRange[0], endDate]);
   };
-
-  const filterRange = useCallback(() => {
-    if (!tempRange) return;
-    if (tempRange.endDate < tempRange.startDate) {
-      setValidationError(true);
-      return;
-    }
-    //updateData(tempRange);
-    //getData()
-  }, [tempRange]);
-
   const selectSince = useCallback((v: SingleValue<SinceType>) => {
     if (!v) return;
     setSinceSelected(v);
-    setTempRange({
-      startDate: moverFecha(new Date(), -v.value),
-      endDate: new Date(),
-    });
+    setTempRange([moverFecha(new Date(), -v.value), new Date()]);
     setValidationError(false);
   }, []);
 
-  useEffect(() => {
-    //setTempRange(timeRange);
-  }, [timeRange]);
+  const onFilter = useCallback(() => {
+    if (!tempRange) return;
+    if (tempRange[0] > tempRange[1]) {
+      setValidationError(true);
+      return;
+    }
+    updateTimeRange(tempRange);
+  }, [tempRange, updateTimeRange]);
 
-  useEffect(() => {
-    //updateData({ startDate: moverFecha(new Date(), -14), endDate: new Date() });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
-    <SelectRangeComponent
+    <SelectRange
       tempRange={tempRange}
       sinceSelected={sinceSelected}
       sinceOptions={sinceOptions}
@@ -72,7 +67,7 @@ export default function SelectRangeContainer() {
       setStartDate={setStartDate}
       setEndDate={setEndDate}
       selectSince={selectSince}
-      onFilter={filterRange}
+      onFilter={onFilter}
     />
   );
 }

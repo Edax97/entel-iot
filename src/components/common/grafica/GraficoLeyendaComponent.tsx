@@ -61,19 +61,24 @@ export default function GraficoLeyendaComponent<DatumT extends {}>({
 
   return (
     <ParentSize>
-      {({ width, height }) => (
-        <>
-          <div className="ps-5" style={{ height: leyendaHeight }}>
-            <Leyenda seriesLegend={seriesLegend} toggleSeries={toggleSeries} />
-          </div>
-          <GraficaTemporal<DatumT>
-            width={width}
-            height={height - leyendaHeight}
-            seriesVis={seriesVis}
-            {...graficoProps}
-          />
-        </>
-      )}
+      {({ width }) => {
+        return (
+          <>
+            <div className="ps-5" style={{ height: leyendaHeight }}>
+              <Leyenda
+                seriesLegend={seriesLegend}
+                toggleSeries={toggleSeries}
+              />
+            </div>
+            <GraficaTemporal<DatumT>
+              width={width}
+              height={width * 0.3}
+              seriesVis={seriesVis}
+              {...graficoProps}
+            />
+          </>
+        );
+      }}
     </ParentSize>
   );
 }

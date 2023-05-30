@@ -3,10 +3,11 @@ import React, {
   Dispatch,
   ReactNode,
   SetStateAction,
+  useCallback,
   useContext,
   useState,
 } from "react";
-import { moverFecha } from "../utilities/date-utils";
+import { extendRange } from "../utilities/date-utils";
 
 export type RangeT = [Date, Date] | null;
 interface AreaT {
@@ -16,7 +17,7 @@ interface AreaT {
 interface AreaGraficaContextT {
   timeRange: RangeT;
   currentArea: AreaT | null;
-  setTimeRange: Dispatch<SetStateAction<RangeT>>;
+  updateTimeRange: (r: RangeT) => void;
   setCurrentArea: Dispatch<SetStateAction<AreaT | null>>;
 }
 
@@ -28,15 +29,22 @@ interface Props {
   children: ReactNode;
 }
 export default function AreaGraficaProvider({ children }: Props) {
-  const [timeRange, setTimeRange] = useState<RangeT>([
-    new Date(),
-    moverFecha(new Date(), -14),
-  ]);
+  const [timeRange, setTimeRange] = useState<RangeT>(null);
   const [currentArea, setCurrentArea] = useState<AreaT | null>(null);
+
+  const updateTimeRange = useCallback((r: RangeT) => {
+    if (!r) return;
+    setTimeRange(extendRange(r));
+  }, []);
 
   return (
     <AreaGraficaContext.Provider
-      value={{ timeRange, setTimeRange, currentArea, setCurrentArea }}
+      value={{
+        timeRange,
+        updateTimeRange,
+        currentArea,
+        setCurrentArea,
+      }}
     >
       {children}
     </AreaGraficaContext.Provider>

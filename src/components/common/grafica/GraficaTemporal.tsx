@@ -43,7 +43,7 @@ export function GraficaTemporal<Datum extends {}>(props: Props<Datum>) {
       width={props.width}
       margin={{
         top: 20,
-        bottom: 20,
+        bottom: 30,
         right: 50,
         left: 50,
       }}
