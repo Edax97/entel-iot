@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { SingleValue } from "react-select";
-import { moverFecha } from "../../../api/utilities/date-utils";
-import { useGraficasContext } from "../../state-provider/GraficasProvider";
+import { useAreaGraficaContext } from "../../store/AreaGraficaProvider";
+import { moverFecha } from "../../utilities/date-utils";
 import SelectRangeComponent from "./SelectRangeComponent";
 
 export type SinceType = { value: number; label: string };
@@ -15,7 +15,7 @@ const sinceOptions: SinceType[] = [
 ];
 
 export default function SelectRangeContainer() {
-  const { timeRange, updateData } = useGraficasContext();
+  const { timeRange } = useAreaGraficaContext();
 
   const [tempRange, setTempRange] = useState<RangeType>(null);
   const [sinceSelected, setSinceSelected] = useState<SinceType>({
@@ -41,9 +41,9 @@ export default function SelectRangeContainer() {
       setValidationError(true);
       return;
     }
-    updateData(tempRange);
+    //updateData(tempRange);
     //getData()
-  }, [tempRange, updateData]);
+  }, [tempRange]);
 
   const selectSince = useCallback((v: SingleValue<SinceType>) => {
     if (!v) return;
@@ -56,11 +56,11 @@ export default function SelectRangeContainer() {
   }, []);
 
   useEffect(() => {
-    setTempRange(timeRange);
+    //setTempRange(timeRange);
   }, [timeRange]);
 
   useEffect(() => {
-    updateData({ startDate: moverFecha(new Date(), -14), endDate: new Date() });
+    //updateData({ startDate: moverFecha(new Date(), -14), endDate: new Date() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

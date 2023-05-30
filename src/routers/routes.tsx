@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Escritorio from "../pages/Escritorio";
 import Configuracion from "../pages/Configuracion";
 import Reportes from "../pages/Reportes";
-import Graficas from "../pages/Graficas";
+import Graficas from "../pages/GraficasNew";
 import Alertas from "../pages/Alertas";
 import Reservorios from "../pages/Reservorios";
 import Layout from "../pages/Layout";
