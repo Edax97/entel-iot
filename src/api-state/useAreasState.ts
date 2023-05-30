@@ -11,7 +11,7 @@ export function useAreasState(codigo_m: string) {
   const registros = useMemo(() => data?.length || 0, [data]);
 
   return {
-    areaLista: data,
+    areaLista: data || [],
     registros: registros,
     error,
     isLoading,
