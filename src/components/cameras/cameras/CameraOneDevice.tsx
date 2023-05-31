@@ -2,10 +2,11 @@ import React from "react";
 import CardWidget from "../../common/card-widget/CardWidget";
 import { FaExpand as Expand } from "react-icons/fa";
 import BtnIcon from "../../common/btn-icon/BtnIcon";
-import { SlOptions as Options } from "react-icons/sl";
 import { DispositivoAPIType } from "../../../api/dispositivos-api";
 import { ReactComponent as BtnGreen } from "../../../assets/btn-green.svg";
 import { ReactComponent as BtnRed } from "../../../assets/btn-red.svg";
+
+const radius = 16;
 
 interface Props {
   cameraName: string;
@@ -18,15 +19,15 @@ export default function CameraOneDevice({ cameraName, device }: Props) {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <Options className="fs-6 text-secondary" />
+            <i className="bi bi-arrow-clockwise text-white" />
           </BtnIcon>
         </>
       }
     >
-      <div className="d-flex align-items-center gap-3 m-4 mb-5">
+      <div className="d-flex align-items-center gap-3 p-4 m-2">
         <div className="d-flex gap-3 align-items-end">
           <div className="d-flex align-items-center">
             {device.temp.toFixed(1)} °C
@@ -45,9 +46,9 @@ export default function CameraOneDevice({ cameraName, device }: Props) {
         device.temp < +device.dis_mint ||
         device.hum > +device.dis_maxh ||
         device.hum < +device.dis_minh ? (
-          <BtnRed width={48} height={48} />
+          <BtnRed width={2 * radius} height={2 * radius} />
         ) : (
-          <BtnGreen width={48} height={48} />
+          <BtnGreen width={2 * radius} height={2 * radius} />
         )}
         <span className="text-secondary" style={{ fontSize: "small" }}>
           {device.dis_sensor_id}

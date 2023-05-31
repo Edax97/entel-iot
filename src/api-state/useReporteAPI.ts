@@ -52,7 +52,6 @@ export function useReporteAPI(
         ...dataReporte,
       ];
     });
-    console.log("Data", dataReporte);
     return dataReporte.filter(
       (d, i) => i % (dataReporte.length > 3000 ? 12 : 6) === 0
     );

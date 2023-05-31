@@ -14,12 +14,16 @@ export default function CardWidget(props: Props) {
       className={`${className || "bg-gray"}  card border-0 shadow  `}
       {...restProps}
     >
-      <div className="d-flex ps-3 pe-2 pt-2">
-        <span className=" text-dark text-opacity-75 pt-2">{title}</span>
-        <span className="ms-auto d-flex gap-2 align-items-center">
-          {toolbar}
-        </span>
-      </div>
+      {toolbar && (
+        <div className="d-flex align-items-center ps-3 pe-2 py-1 rounded-top bg-primary text-white">
+          <span className="" style={{ fontSize: "0.9rem" }}>
+            {title}
+          </span>
+          <span className="ms-auto d-flex gap-2 align-items-center">
+            {toolbar}
+          </span>
+        </div>
+      )}
       {children}
     </div>
   );

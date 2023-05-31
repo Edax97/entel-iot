@@ -68,20 +68,20 @@ export default function DispositivosContainer() {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-secondary" />
+            <i className="bi bi-arrow-clockwise text-white" />
           </BtnIcon>
         </>
       }
     >
-      <div className="p-4">
+      <div className="p-4 pb-2">
         <DispositivosLista
           onEdit={onEdit}
           dispositivoLista={dispositivosPage}
         />
-        <div className="d-flex justify-content-end pt-1">
+        <div className="d-flex justify-content-end pt-3">
           <Paginacion
             pageCount={pageCount}
             onPageChange={(item) => {

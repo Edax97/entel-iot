@@ -1,7 +1,6 @@
 import React from "react";
 import { LevelDatumType } from "../../../store/res-graficas-store";
 import BtnIcon from "../../common/btn-icon/BtnIcon";
-import { SlOptions as Options } from "react-icons/sl";
 import { FaExpand as Expand } from "react-icons/fa";
 import CardWidget from "../../common/card-widget/CardWidget";
 import GraficoLeyendaComponent from "../../common/grafica/GraficoLeyendaComponent";
@@ -30,10 +29,10 @@ export default function NivelGraficaContainer() {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <Options className="fs-6 text-secondary" />
+            <i className="bi bi-arrow-clockwise text-white" />
           </BtnIcon>
         </>
       }

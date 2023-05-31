@@ -31,10 +31,10 @@ export default function MailConfig(props: Props) {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-secondary" />
+            <i className="bi bi-arrow-clockwise text-white" />
           </BtnIcon>
         </>
       }

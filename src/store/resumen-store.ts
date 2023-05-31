@@ -19,7 +19,6 @@ export const resumenStore: StateCreator<StoreType, [], [], ResumenStoreType> = (
     set({ resumenLoading: true, resumenError: false });
     getResumenAPI(codigo_m)
       .then((resumen) => {
-        console.log("Resumen", resumen);
         set({ resumen, resumenLoading: false });
       })
       .catch(() => set({ resumenLoading: false, resumenError: true }));

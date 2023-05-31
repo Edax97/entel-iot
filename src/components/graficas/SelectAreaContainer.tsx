@@ -19,6 +19,11 @@ export default function SelectAreaContainer() {
     setCurrentArea({ id: `${selected.value}`, name: selected.label });
   }, [selected, setCurrentArea]);
 
+  useEffect(() => {
+    if (options.length === 0) return;
+    setSelected(options[0]);
+  }, [options]);
+
   return (
     <SelectArea selected={selected} options={options} onSelect={setSelected} />
   );

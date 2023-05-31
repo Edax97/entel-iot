@@ -18,10 +18,10 @@ export default function GraficaCard() {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <Options className="fs-6 text-secondary" />
+            <Options className="fs-6 text-white" />
           </BtnIcon>
         </>
       }

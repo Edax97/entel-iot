@@ -7,7 +7,6 @@ import ErrorMessage from "../common/message/ErrorMessage";
 import AlertasPageContainer from "./AlertasPageContainer";
 import Paginacion from "../common/paginacion/Paginacion";
 import { FaExpand as Expand } from "react-icons/fa";
-import { SlOptions as Options } from "react-icons/sl";
 import { useAppStore } from "../../store/store";
 
 export default function AlertasHistorial() {
@@ -39,15 +38,15 @@ export default function AlertasHistorial() {
       toolbar={
         <>
           <BtnIcon>
-            <Expand className="fs-6 text-secondary" />
+            <Expand className="fs-6 text-white" />
           </BtnIcon>
           <BtnIcon>
-            <Options className="fs-6 text-secondary" />
+            <i className="bi bi-arrow-clockwise text-white" />
           </BtnIcon>
         </>
       }
     >
-      <div className="m-4 mx-5">
+      <div className="m-4 mx-5 mb-2">
         <div className="d-none">
           <AlertasPageContainer page={prev(page)} tipoStr="historial" />
           <AlertasPageContainer page={next(page)} tipoStr="historial" />
@@ -55,11 +54,10 @@ export default function AlertasHistorial() {
         <div>
           <AlertasPageContainer page={page} tipoStr="historial" />
         </div>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end pt-3">
           <Paginacion
             pageCount={paginas || 1}
             onPageChange={(item) => {
-              console.log("Item selected", item.selected);
               setPage(item.selected + 1);
             }}
           />
