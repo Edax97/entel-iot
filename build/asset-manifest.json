@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/entel/static/css/main.2fb06c7b.css",
-    "main.js": "/entel/static/js/main.edf05bda.js",
+    "main.js": "/entel/static/js/main.dd1920c8.js",
     "static/js/787.d76fb95b.chunk.js": "/entel/static/js/787.d76fb95b.chunk.js",
     "static/media/bootstrap-icons.woff?": "/entel/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
     "static/media/bootstrap-icons.woff2?": "/entel/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
@@ -14,11 +14,11 @@
     "static/media/water-sensor.svg": "/entel/static/media/water-sensor.c0c998f6883daec2ca27385dee30409f.svg",
     "static/media/water-tank.svg": "/entel/static/media/water-tank.c35240343f13eba35993e43299e76901.svg",
     "main.2fb06c7b.css.map": "/entel/static/css/main.2fb06c7b.css.map",
-    "main.edf05bda.js.map": "/entel/static/js/main.edf05bda.js.map",
+    "main.dd1920c8.js.map": "/entel/static/js/main.dd1920c8.js.map",
     "787.d76fb95b.chunk.js.map": "/entel/static/js/787.d76fb95b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2fb06c7b.css",
-    "static/js/main.edf05bda.js"
+    "static/js/main.dd1920c8.js"
   ]
 }

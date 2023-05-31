@@ -50,6 +50,13 @@ export const getCameraDevicesAPI = async (codigo_m: string) => {
 };
 
 export interface AreaUpdateType {
+  id: string;
+  descripcion: string;
+  estado: string;
+  max_temperatura: string;
+  min_temperatura: string;
+  max_humedad: string;
+  min_humedad: string;
   [key: string]: string;
 }
 interface UpdateRes {
@@ -62,5 +69,8 @@ export const updateAreaAPI = (area: AreaUpdateType) => {
     .join("&");
   return putMethod<UpdateRes>(
     `${API}/api/Consultas/actualizarlocacion?${query}`
-  );
+  ).then((res) => {
+    if (res.rpta <= 0) throw Error("Incorrect response");
+    return res;
+  });
 };

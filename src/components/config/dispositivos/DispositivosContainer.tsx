@@ -1,7 +1,5 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import CardWidget from "../../common/card-widget/CardWidget";
-import { FaExpand as Expand } from "react-icons/fa";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
 import DispositivosLista from "./DispositivosLista";
 import {
   DispositivoAPIType,
@@ -63,19 +61,7 @@ export default function DispositivosContainer() {
       <ErrorMessage className="my-4" message="Error al cargar configuración." />
     );
   return (
-    <CardWidget
-      title="Configurar dispositivos registrados."
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Configurar dispositivos registrados." toolbar={true}>
       <div className="p-4 pb-2">
         <DispositivosLista
           onEdit={onEdit}

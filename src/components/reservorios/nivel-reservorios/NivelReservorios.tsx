@@ -1,34 +1,19 @@
-import React from "react";
 import { ReservorioLevelType } from "../../../store/reservorios-store";
 import CardWidget from "../../common/card-widget/CardWidget";
 import { SlOptions as Options } from "react-icons/sl";
-import { FaExpand as Expand } from "react-icons/fa";
 import { GoPrimitiveDot as Dot } from "react-icons/go";
 import { ReactComponent as WaterSensor } from "../../../assets/water-sensor.svg";
 
 import { BsBatteryHalf as Battery } from "react-icons/bs";
 import SignalIndicator from "../signal-indicator/SignalIndicator";
 import ReservorioDiagram from "../reservorio-diagram/ReservorioDiagram";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
 
 interface Props {
   reservorios: ReservorioLevelType[];
 }
 export default function NivelReservorios(props: Props) {
   return (
-    <CardWidget
-      title="Nivel de reservorios"
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Nivel de reservorios" toolbar={true}>
       <div className="d-flex justify-content-around gap-5 flex-wrap m-4 mb-5">
         {props.reservorios.map((res) => (
           <div key={res.id} className="">

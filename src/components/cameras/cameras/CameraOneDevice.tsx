@@ -1,7 +1,5 @@
 import React from "react";
 import CardWidget from "../../common/card-widget/CardWidget";
-import { FaExpand as Expand } from "react-icons/fa";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
 import { DispositivoAPIType } from "../../../api/dispositivos-api";
 import { ReactComponent as BtnGreen } from "../../../assets/btn-green.svg";
 import { ReactComponent as BtnRed } from "../../../assets/btn-red.svg";
@@ -14,20 +12,8 @@ interface Props {
 }
 export default function CameraOneDevice({ cameraName, device }: Props) {
   return (
-    <CardWidget
-      title={cameraName}
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
-      <div className="d-flex align-items-center gap-3 p-4 m-2">
+    <CardWidget title={cameraName} toolbar={true}>
+      <div className="d-flex align-items-center gap-3 p-4 m-2 flex-wrap">
         <div className="d-flex gap-3 align-items-end">
           <div className="d-flex align-items-center">
             {device.temp.toFixed(1)} °C

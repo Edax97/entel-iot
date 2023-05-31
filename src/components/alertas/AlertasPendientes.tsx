@@ -1,11 +1,9 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useAlertasState } from "../../api-state/useAlertasState";
-import BtnIcon from "../common/btn-icon/BtnIcon";
 import CardWidget from "../common/card-widget/CardWidget";
 import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
 import Paginacion from "../common/paginacion/Paginacion";
-import { FaExpand as Expand } from "react-icons/fa";
 import AlertasPageContainer from "./AlertasPageContainer";
 import { useAppStore } from "../../store/store";
 
@@ -33,19 +31,7 @@ export default function AlertasPendientes() {
   if (error)
     return <ErrorMessage message="Error al cargar alertas." className="my-3" />;
   return (
-    <CardWidget
-      title="Alertas activas"
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Alertas activas" toolbar={true}>
       <div className="mt-4 mx-5 mb-2">
         <div className="d-none">
           <AlertasPageContainer page={prev(page)} tipoStr="pendientes" />

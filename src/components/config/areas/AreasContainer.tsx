@@ -1,10 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useAreasState } from "../../../api-state/useAreasState";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
-import { FaExpand as Expand } from "react-icons/fa";
 import CardWidget from "../../common/card-widget/CardWidget";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
 import Paginacion from "../../common/paginacion/Paginacion";
 import AreaLista from "./AreaLista";
 import { CameraAPIType, updateAreaAPI } from "../../../api/cameras-api";
@@ -43,8 +41,8 @@ export default function AreasContainer() {
       };
 
       try {
-        const res = await updateAreaAPI(areaUpdate);
-        if (res.rpta > 0) mutate();
+        await updateAreaAPI(areaUpdate);
+        mutate();
       } catch (e) {
         setEditError(true);
       }
@@ -58,19 +56,7 @@ export default function AreasContainer() {
       <ErrorMessage className="my-4" message="Error al cargar configuración." />
     );
   return (
-    <CardWidget
-      title="Configurar áreas registradas."
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Configurar áreas registradas." toolbar={true}>
       <div className="p-4 pb-2">
         <AreaLista onEdit={onEdit} areaLista={areasPage} />
         <div className="d-flex justify-content-end pt-3">
@@ -82,7 +68,7 @@ export default function AreasContainer() {
           />
         </div>
         {editError && (
-          <ErrorMessage className="pt-3" message="Error al actualizar área." />
+          <ErrorMessage className="mt-3" message="Error al actualizar área." />
         )}
       </div>
     </CardWidget>

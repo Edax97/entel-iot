@@ -1,7 +1,5 @@
-import React, { Dispatch, FormEvent, SetStateAction } from "react";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
+import { Dispatch, FormEvent, SetStateAction } from "react";
 import CardWidget from "../../common/card-widget/CardWidget";
-import { FaExpand as Expand } from "react-icons/fa";
 import { MailAPIType } from "../../../api/mails-api";
 
 interface Props {
@@ -26,19 +24,7 @@ export default function MailConfig(props: Props) {
 
   if (props.mailList.length === 0) return null;
   return (
-    <CardWidget
-      title="Configuración de correos"
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Configuración de correos" toolbar={true}>
       <div className="p-4 pb-5 d-flex gap-5">
         <form onSubmit={onSubmit}>
           <div className="text-secondary">

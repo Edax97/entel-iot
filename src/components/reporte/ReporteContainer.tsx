@@ -1,11 +1,9 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useReporteAPI } from "../../api-state/useReporteAPI";
 import { useAreaGraficaContext } from "../../store/AreaGraficaProvider";
 import { useAppStore } from "../../store/store";
-import BtnIcon from "../common/btn-icon/BtnIcon";
 import CardWidget from "../common/card-widget/CardWidget";
 import Paginacion from "../common/paginacion/Paginacion";
-import { FaExpand as Expand } from "react-icons/fa";
 import Loading from "../common/loading/Loading";
 import ReporteTable from "./ReporteTable";
 
@@ -34,19 +32,7 @@ export default function ReporteContainer() {
   if (isLoading || !dataReporte) return <Loading className="my-5" />;
   if (error) return null;
   return (
-    <CardWidget
-      title="Configurar dispositivos registrados."
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Configurar dispositivos registrados." toolbar={true}>
       <div className="p-4 pb-2">
         <ReporteTable headers={headersReporte} pageReporte={pageReporte} />
         <div className="d-flex justify-content-end pt-3">

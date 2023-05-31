@@ -1,7 +1,4 @@
-import React from "react";
 import { LevelDatumType } from "../../../store/res-graficas-store";
-import BtnIcon from "../../common/btn-icon/BtnIcon";
-import { FaExpand as Expand } from "react-icons/fa";
 import CardWidget from "../../common/card-widget/CardWidget";
 import GraficoLeyendaComponent from "../../common/grafica/GraficoLeyendaComponent";
 import { useAppStore } from "../../../store/store";
@@ -24,19 +21,7 @@ export default function NivelGraficaContainer() {
   if (error) return <ErrorMessage message="Error al cargar gráfica." />;
   if (!timeRange) return null;
   return (
-    <CardWidget
-      title="Evolución temporal"
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Evolución temporal" toolbar={true}>
       <div className="p-4 pb-5" style={{ height: "400px" }}>
         <GraficoLeyendaComponent<LevelDatumType>
           timeDomain={timeRange}

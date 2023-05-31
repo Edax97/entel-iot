@@ -1,12 +1,10 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useAlertasState } from "../../api-state/useAlertasState";
-import BtnIcon from "../common/btn-icon/BtnIcon";
 import CardWidget from "../common/card-widget/CardWidget";
 import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
 import AlertasPageContainer from "./AlertasPageContainer";
 import Paginacion from "../common/paginacion/Paginacion";
-import { FaExpand as Expand } from "react-icons/fa";
 import { useAppStore } from "../../store/store";
 
 export default function AlertasHistorial() {
@@ -33,19 +31,7 @@ export default function AlertasHistorial() {
   if (error)
     return <ErrorMessage message="Error al cargar alertas." className="my-3" />;
   return (
-    <CardWidget
-      title="Alertas registradas"
-      toolbar={
-        <>
-          <BtnIcon>
-            <Expand className="fs-6 text-white" />
-          </BtnIcon>
-          <BtnIcon>
-            <i className="bi bi-arrow-clockwise text-white" />
-          </BtnIcon>
-        </>
-      }
-    >
+    <CardWidget title="Alertas registradas" toolbar={true}>
       <div className="m-4 mx-5 mb-2">
         <div className="d-none">
           <AlertasPageContainer page={prev(page)} tipoStr="historial" />

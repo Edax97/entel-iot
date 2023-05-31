@@ -1,4 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
+import BtnIcon from "../btn-icon/BtnIcon";
+import { GoDash as Dash, GoPlus as Plus } from "react-icons/go";
 import "./card-widget.scss";
 
 interface Props {
@@ -9,6 +11,9 @@ interface Props {
 }
 export default function CardWidget(props: Props) {
   const { title, toolbar, children, className, ...restProps } = props;
+
+  const [minimized, setMinimized] = useState(false);
+
   return (
     <div
       className={`${className || "bg-gray"}  card border-0 shadow  `}
@@ -21,10 +26,16 @@ export default function CardWidget(props: Props) {
           </span>
           <span className="ms-auto d-flex gap-2 align-items-center">
             {toolbar}
+            <BtnIcon
+              onClick={() => setMinimized(!minimized)}
+              className="text-white"
+            >
+              {minimized ? <Plus /> : <Dash />}
+            </BtnIcon>
           </span>
         </div>
       )}
-      {children}
+      {!minimized && children}
     </div>
   );
 }

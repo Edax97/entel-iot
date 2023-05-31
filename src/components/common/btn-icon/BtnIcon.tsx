@@ -1,7 +1,11 @@
-import React from "react";
+import React, { ButtonHTMLAttributes, ReactNode } from "react";
 import "./btn-icon.css";
 
-export default function BtnIcon(props: any) {
+type Props = {
+  className?: string;
+  children: ReactNode;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+export default function BtnIcon(props: Props) {
   const { className, children, ...btnProps } = props;
   return (
     <button className={`btn-icon btn-sm  ${className}`} {...btnProps}>
