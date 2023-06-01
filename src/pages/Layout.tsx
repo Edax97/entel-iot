@@ -15,7 +15,7 @@ export default function Layout() {
       <TopBarContainer />
       <div className={sidebarOpen ? "sidebarState active" : "sidebarState"}>
         <div
-          className="header-below bg-primary d-none"
+          className="header-below bg-primary"
           style={{
             minHeight: "800px",
           }}
