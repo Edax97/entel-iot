@@ -13,7 +13,15 @@ export default function TopBar(props: Props) {
         className="ps-3 pe-2 d-flex align-items-center gap-3 "
         style={{ height: "48px" }}
       >
-        <img src={Logo} alt="" style={{ height: "100%" }} />
+        <a
+          href="#sidebar-off"
+          data-bs-toggle="offcanvas"
+          role="button"
+          className=" h-100"
+        >
+          <img src={Logo} alt="" style={{ height: "100%" }} />
+        </a>
+
         <div
           className="ms-2 fs-6 text-opacity-75 text-white"
           style={{ letterSpacing: "0.01em" }}

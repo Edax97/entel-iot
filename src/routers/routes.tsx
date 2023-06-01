@@ -18,7 +18,7 @@ function MyRoutes() {
         <Route path="reservorios" element={<Reservorios />}></Route>
         <Route path="configuracion" element={<Configuracion />}></Route>
         <Route path="reportes" element={<Reportes />}></Route>
-        <Route path="graficas" element={<Graficas />}></Route>
+        <Route path="graficos" element={<Graficas />}></Route>
         <Route path="alertas" element={<Alertas />}></Route>
       </Route>
     </Routes>

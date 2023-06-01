@@ -10,6 +10,7 @@ import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import Paginacion from "../../common/paginacion/Paginacion";
 import { useAppStore } from "../../../store/store";
+import SuccessMessage from "../../common/message/SuccessMessage";
 
 const itemsPerPage = 10;
 
@@ -17,8 +18,6 @@ export default function DispositivosContainer() {
   const id = useAppStore((state) => state.user?.id);
   const { registros, dispositivoLista, error, isLoading, mutate } =
     useDispositivosState(`${id}`);
-
-  const [editError, setEditError] = useState(false);
 
   const [page, setPage] = useState(1);
   const pageCount = useMemo(
@@ -31,10 +30,14 @@ export default function DispositivosContainer() {
       dispositivoLista?.slice(itemsPerPage * (page - 1), itemsPerPage * page),
     [dispositivoLista, page]
   );
-
+  const [editState, setEditState] = useState({
+    error: false,
+    success: false,
+    loading: false,
+  });
   const onEdit = useCallback(
     async (d: DispositivoAPIType) => {
-      setEditError(false);
+      setEditState({ error: false, success: false, loading: true });
       const dispositivoUpdate = {
         id: `${d.dis_id}`,
         loc_id: d.dis_locacion,
@@ -46,13 +49,14 @@ export default function DispositivosContainer() {
       };
 
       try {
-        const res = await updateDispositivoAPI(dispositivoUpdate);
-        if (res.rpta > 0) mutate();
+        await updateDispositivoAPI(dispositivoUpdate);
+        mutate();
+        setEditState({ ...editState, success: true, loading: false });
       } catch (e) {
-        setEditError(true);
+        setEditState({ ...editState, error: true, loading: false });
       }
     },
-    [mutate]
+    [mutate, editState]
   );
 
   if (isLoading) return <Loading className="my-5" />;
@@ -66,6 +70,7 @@ export default function DispositivosContainer() {
         <DispositivosLista
           onEdit={onEdit}
           dispositivoLista={dispositivosPage}
+          editLoading={editState.loading}
         />
         <div className="d-flex justify-content-end pt-3">
           <Paginacion
@@ -75,11 +80,14 @@ export default function DispositivosContainer() {
             }}
           />
         </div>
-        {editError && (
+        {editState.error && (
           <ErrorMessage
-            className="pt-3"
+            className="mt-3"
             message="Error al actualizar dispositivo."
           />
+        )}
+        {editState.success && (
+          <SuccessMessage className="mt-3" message="Dispositivo actualizado." />
         )}
       </div>
     </CardWidget>

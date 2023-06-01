@@ -32,7 +32,7 @@ export default function ReporteContainer() {
   if (isLoading || !dataReporte) return <Loading className="my-5" />;
   if (error) return null;
   return (
-    <CardWidget title="Configurar dispositivos registrados." toolbar={true}>
+    <CardWidget title={`REPORTE ${currentArea?.name}`} toolbar={true}>
       <div className="p-4 pb-2">
         <ReporteTable headers={headersReporte} pageReporte={pageReporte} />
         <div className="d-flex justify-content-end pt-3">

@@ -15,9 +15,10 @@ interface Props {
 export default function Leyenda(props: Props) {
   return props.seriesLegend.length > 0 ? (
     <div className="px-2 pt-1" style={{ fontSize: "small" }}>
-      <div className="d-flex gap-3">
+      <div className="d-flex flex-wrap">
         {props.seriesLegend.map((serie) => (
           <div
+            className="px-1"
             key={serie.id}
             style={{ color: serie.color }}
             role="button"

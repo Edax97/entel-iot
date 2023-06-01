@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/alert";
+import "bootstrap/js/dist/offcanvas";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";

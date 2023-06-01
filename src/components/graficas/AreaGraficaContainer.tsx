@@ -21,7 +21,6 @@ export default function AreaGraficaContainer() {
     currentArea?.id || "",
     maxTimeRange
   );
-
   useEffect(() => {
     if (!maxTimeRange || !timeRange) return setMaxTimeRange(timeRange);
     if (maxTimeRange[1] < timeRange[1] || maxTimeRange[0] > timeRange[0])
@@ -44,14 +43,14 @@ export default function AreaGraficaContainer() {
   const tempAccesors = useMemo<AccessorsType<AreaDatumT>>(
     () => ({
       xAccessor: (d: AreaDatumT) => d?.fecha,
-      yAccessor: (d: AreaDatumT) => d?.temp,
+      yAccessor: (d: AreaDatumT) => +d?.temp.toFixed(2),
     }),
     []
   );
   const humeAccessors = useMemo<AccessorsType<AreaDatumT>>(
     () => ({
       xAccessor: (d: AreaDatumT) => d?.fecha,
-      yAccessor: (d: AreaDatumT) => d?.hume,
+      yAccessor: (d: AreaDatumT) => +d?.hume.toFixed(2),
     }),
     []
   );

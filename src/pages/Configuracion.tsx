@@ -14,14 +14,14 @@ export default function Configuracion() {
   }, []);
 
   return (
-    <div className="container-fluid my-5 px-4">
+    <div className="container-fluid py-4 px-4">
       <div>
         <MailConfigContainer />
       </div>
-      <div className="mt-4">
+      <div className="pt-4">
         <DispositivosContainer />
       </div>
-      <div className="mt-4">
+      <div className="pt-4">
         <AreasContainer />
       </div>
     </div>

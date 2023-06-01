@@ -1,6 +1,6 @@
 import React from "react";
-import SelectAreaContainer from "../components/graficas/SelectAreaContainer";
-import SelectRangeContainer from "../components/graficas/SelectRangeContainer";
+import SelectAreaContainer from "../components/graficas/select/SelectAreaContainer";
+import SelectRangeContainer from "../components/graficas/select/SelectRangeContainer";
 import ReporteContainer from "../components/reporte/ReporteContainer";
 import AreaGraficaProvider from "../store/AreaGraficaProvider";
 

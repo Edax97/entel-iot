@@ -20,7 +20,7 @@ export default function CameraDiagram(props: Props) {
     [props.deviceList, devByRow]
   );
   const width_step = props.width / (devByRow + 1);
-  const height_step = width_step > 100 ? width_step : width_step * 1.1;
+  const height_step = width_step > 100 ? width_step : 120;
 
   const fsBox = width_step > 100 ? "small" : "x-small";
   const radius = width_step > 100 ? 14 : 11;
@@ -107,7 +107,7 @@ export default function CameraDiagram(props: Props) {
                 <i className="ms-1 fs-6 bi bi-droplet-half text-secondary"></i>
               </div>
               <div className="d-flex align-items-center">
-                <span>{dev.hum.toFixed(1)} %</span>
+                <span>{dev.bat.toFixed(1)} %</span>
                 <i className="ms-1 fs-6 bi bi-battery-half text-secondary"></i>
               </div>
             </div>

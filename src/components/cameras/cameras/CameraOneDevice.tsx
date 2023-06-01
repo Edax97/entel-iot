@@ -24,7 +24,7 @@ export default function CameraOneDevice({ cameraName, device }: Props) {
             <i className="ms-1 fs-4 bi bi-droplet-half text-secondary"></i>
           </div>
           <div className="d-flex align-items-center">
-            {device.hum.toFixed(1)} %
+            {device.bat.toFixed(1)} %
             <i className="ms-1 fs-4 bi bi-battery-half text-secondary"></i>
           </div>
         </div>

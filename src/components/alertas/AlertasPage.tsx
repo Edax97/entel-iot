@@ -19,8 +19,8 @@ export default function AlertasPage(props: Props) {
         </tr>
       </thead>
       <tbody className="text-dark text-opacity-75">
-        {props.alertaList.map((alerta) => (
-          <tr key={alerta.alert_id}>
+        {props.alertaList.map((alerta, j) => (
+          <tr key={j}>
             <td className="px-4">{alerta.alert_area}</td>
             <td className="px-4">{alerta.alert_sensor_nom}</td>
             <td className="px-4">

@@ -22,7 +22,7 @@ export default function NivelGraficaContainer() {
   if (!timeRange) return null;
   return (
     <CardWidget title="Evolución temporal" toolbar={true}>
-      <div className="p-4 pb-5" style={{ height: "400px" }}>
+      <div className="p-4 pb-5">
         <GraficoLeyendaComponent<LevelDatumType>
           timeDomain={timeRange}
           series={series}

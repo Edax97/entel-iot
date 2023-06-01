@@ -5,6 +5,7 @@ import InputSm from "../../common/forms/InputSm";
 interface Props {
   dispositivoLista: DispositivoAPIType[];
   onEdit: (d: DispositivoAPIType) => void;
+  editLoading: boolean;
 }
 export default function DispositivosLista(props: Props) {
   const [disLista, setDisLista] = useState<DispositivoAPIType[]>([]);
@@ -131,6 +132,7 @@ export default function DispositivosLista(props: Props) {
               <button
                 className="btn btn-outline-info btn-sm"
                 onClick={() => props.onEdit(dis)}
+                disabled={props.editLoading}
               >
                 Editar
               </button>

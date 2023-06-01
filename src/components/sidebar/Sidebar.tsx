@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./Sidebar.scss";
 //import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
+import { useAppStore } from "../../store/store";
+import { opcionesLista } from "./opciones-lista";
 
 interface Props {
   sidebarOpen: boolean;
@@ -10,10 +12,16 @@ interface Props {
 }
 function Sidebar(props: Props) {
   const { sidebarOpen, setSidebarOpen } = props;
-
   const ModSidebaropen = () => {
     setSidebarOpen(!sidebarOpen);
   };
+  const user = useAppStore((state) => state.user);
+  const linksArray = useMemo(() => {
+    if (!user) return [];
+    return user.opciones.map((opcion) =>
+      opcionesLista.find((l) => l.codigo === opcion.codigo)
+    );
+  }, [user]);
 
   return (
     <div className={`Container bg-primary ${sidebarOpen && "px-2"}`}>
@@ -27,19 +35,24 @@ function Sidebar(props: Props) {
           } fs-6`}
         ></i>
       </button>
-      {linksArray.map(({ icon, label, to }) => (
-        <div className="px-3 py-3" key={label}>
-          <NavLink
-            to={to}
-            className={({ isActive }) =>
-              `link d-flex gap-3 align-items-center ${isActive ? `active` : ``}`
-            }
-          >
-            <div className="fs-4">{icon}</div>
-            {sidebarOpen && <span>{label}</span>}
-          </NavLink>
-        </div>
-      ))}
+      {linksArray.map((link) => {
+        if (!link) return null;
+        return (
+          <div className="px-3 py-3" key={link.label}>
+            <NavLink
+              to={link.to}
+              className={({ isActive }) =>
+                `link d-flex gap-3 align-items-center ${
+                  isActive ? `active` : ``
+                }`
+              }
+            >
+              <div className="fs-4">{link.icon}</div>
+              {sidebarOpen && <span>{link.label}</span>}
+            </NavLink>
+          </div>
+        );
+      })}
       <div className="px-3 py-3">
         <div
           className="d-flex gap-3 align-items-center link"
@@ -49,42 +62,8 @@ function Sidebar(props: Props) {
           {sidebarOpen && <span>Salir</span>}
         </div>
       </div>
-      <div className="Divider"></div>
     </div>
   );
 }
-
-const linksArray = [
-  {
-    label: "Escritorio",
-    icon: <i className="bi bi-display"></i>,
-    to: "/escritorio",
-  },
-  /*  {
-    label: "Reservorios",
-    icon: <i className="bi bi-water"></i>,
-    to: "/reservorios",
-  }, */
-  {
-    label: "Configuracion",
-    icon: <i className="bi bi-gear"></i>,
-    to: "/configuracion",
-  },
-  {
-    label: "Reportes",
-    icon: <i className="bi bi-file-earmark-text"></i>,
-    to: "/reportes",
-  },
-  {
-    label: "Graficas",
-    icon: <i className="bi bi-bar-chart-fill"></i>,
-    to: "/graficas",
-  },
-  {
-    label: "Alertas",
-    icon: <i className="bi bi-exclamation-triangle"></i>,
-    to: "/alertas",
-  },
-];
 
 export default Sidebar;

@@ -5,6 +5,7 @@ import AreaRow from "./AreaRow";
 interface Props {
   areaLista: CameraAPIType[];
   onEdit: (a: CameraAPIType) => void;
+  editLoading: boolean;
 }
 export default function AreaLista(props: Props) {
   return (
@@ -42,7 +43,12 @@ export default function AreaLista(props: Props) {
       </thead>
       <tbody className="text-dark text-opacity-75">
         {props.areaLista.map((area) => (
-          <AreaRow onEdit={props.onEdit} area={area} key={area.loc_id} />
+          <AreaRow
+            onEdit={props.onEdit}
+            area={area}
+            key={area.loc_id}
+            editLoading={props.editLoading}
+          />
         ))}
       </tbody>
     </table>

@@ -7,6 +7,7 @@ import Paginacion from "../../common/paginacion/Paginacion";
 import AreaLista from "./AreaLista";
 import { CameraAPIType, updateAreaAPI } from "../../../api/cameras-api";
 import { useAppStore } from "../../../store/store";
+import SuccessMessage from "../../common/message/SuccessMessage";
 const itemsPerPage = 10;
 
 export default function AreasContainer() {
@@ -14,7 +15,6 @@ export default function AreasContainer() {
   const { areaLista, registros, error, isLoading, mutate } = useAreasState(
     `${id}`
   );
-  const [editError, setEditError] = useState(false);
 
   const [page, setPage] = useState(1);
   const pageCount = useMemo(
@@ -27,9 +27,14 @@ export default function AreasContainer() {
     [areaLista, page]
   );
 
+  const [editState, setEditState] = useState({
+    error: false,
+    success: false,
+    loading: false,
+  });
   const onEdit = useCallback(
     async (a: CameraAPIType) => {
-      setEditError(false);
+      setEditState({ error: false, success: false, loading: true });
       const areaUpdate = {
         id: `${a.loc_id}`,
         descripcion: a.loc_descripcion,
@@ -43,11 +48,12 @@ export default function AreasContainer() {
       try {
         await updateAreaAPI(areaUpdate);
         mutate();
+        setEditState({ ...editState, success: true, loading: false });
       } catch (e) {
-        setEditError(true);
+        setEditState({ ...editState, error: true, loading: false });
       }
     },
-    [mutate]
+    [mutate, editState]
   );
 
   if (isLoading) return <Loading className="my-5" />;
@@ -58,7 +64,11 @@ export default function AreasContainer() {
   return (
     <CardWidget title="Configurar áreas registradas." toolbar={true}>
       <div className="p-4 pb-2">
-        <AreaLista onEdit={onEdit} areaLista={areasPage} />
+        <AreaLista
+          onEdit={onEdit}
+          areaLista={areasPage}
+          editLoading={editState.loading}
+        />
         <div className="d-flex justify-content-end pt-3">
           <Paginacion
             pageCount={pageCount}
@@ -67,8 +77,11 @@ export default function AreasContainer() {
             }}
           />
         </div>
-        {editError && (
+        {editState.error && (
           <ErrorMessage className="mt-3" message="Error al actualizar área." />
+        )}
+        {editState.success && (
+          <SuccessMessage className="mt-3" message="Area actualizada." />
         )}
       </div>
     </CardWidget>

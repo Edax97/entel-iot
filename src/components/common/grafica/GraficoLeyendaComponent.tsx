@@ -57,14 +57,12 @@ export default function GraficoLeyendaComponent<DatumT extends {}>({
     [setSeriesVis, seriesVis]
   );
 
-  const leyendaHeight = 32;
-
   return (
     <ParentSize>
       {({ width }) => {
         return (
           <>
-            <div className="ps-5" style={{ height: leyendaHeight }}>
+            <div className="ps-5">
               <Leyenda
                 seriesLegend={seriesLegend}
                 toggleSeries={toggleSeries}

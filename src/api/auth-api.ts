@@ -1,9 +1,15 @@
 import { API } from "./api";
 
+interface OpcionType {
+  codigo: number;
+  nombre: string;
+  ruta: string;
+}
 export interface UserAPIType {
   id: number;
   username: string;
   roles: string[];
+  opciones: OpcionType[];
   accessToken: string;
   tokenType: string;
 }

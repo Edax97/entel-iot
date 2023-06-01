@@ -15,7 +15,7 @@ export default function Escritorio() {
   }, []);
 
   return (
-    <div className="container-fluid py-4 py-lg-5 px-lg-5">
+    <div className="container-fluid py-4 p-lg-5">
       <div>
         <ResumenContainer />
       </div>

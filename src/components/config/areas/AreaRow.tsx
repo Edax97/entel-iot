@@ -5,6 +5,7 @@ import InputSm from "../../common/forms/InputSm";
 interface Props {
   area: CameraAPIType;
   onEdit: (a: CameraAPIType) => void;
+  editLoading: boolean;
 }
 export default function AreaRow(props: Props) {
   const [area, setArea] = useState<CameraAPIType | null>(null);
@@ -89,6 +90,7 @@ export default function AreaRow(props: Props) {
         <button
           className="btn btn-outline-info btn-sm"
           onClick={() => props.onEdit(area)}
+          disabled={props.editLoading}
         >
           Editar
         </button>
