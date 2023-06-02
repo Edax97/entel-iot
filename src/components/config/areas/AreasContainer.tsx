@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { useAreasState } from "../../../api-state/useAreasState";
+import { useAreasAPI } from "../../../api-state/useAreasAPI";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import CardWidget from "../../common/card-widget/CardWidget";
@@ -12,7 +12,7 @@ const itemsPerPage = 10;
 
 export default function AreasContainer() {
   const id = useAppStore((state) => state.user?.id);
-  const { areaLista, registros, error, isLoading, mutate } = useAreasState(
+  const { areaLista, registros, error, isLoading, mutate } = useAreasAPI(
     `${id}`
   );
 

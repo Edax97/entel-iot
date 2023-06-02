@@ -23,11 +23,12 @@ export default function CameraDevices({ cameraName, deviceList }: Props) {
 
   return (
     <CardWidget title={cameraName} toolbar={true}>
-      <div className="d-flex flex-column flex-md-row flex-wrap justify-content-center align-items-center m-4 gap-4">
-        <div className="w-95 w-sm-75" style={{ maxWidth: 450 }}>
+      <div className="d-flex justify-content-center m-4 align-items-center gap-4 flex-wrap">
+        <div className="w-100" style={{ maxWidth: 450 }}>
           <CameraDiagramRes deviceList={deviceList} />
         </div>
-        <div className="d-flex flex-md-column align-items-end gap-3">
+
+        <div className="d-flex flex-md-column flex-xl-row flex-xxl-column justify-content-center align-items-end gap-3">
           <div className="d-flex flex-column align-items-end">
             <div className="text-secondary" style={{ fontSize: "small" }}>
               Temperatura Promedio

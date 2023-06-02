@@ -11,19 +11,20 @@ export interface MailAPIType {
 }
 
 interface MailsDataType {
-  status: boolean;
+  status: boolean | number;
   totalRegistros: number;
   listaDatos: MailAPIType[];
   mensaje: string;
+  error?: string;
 }
 
-export const getMailsAPI = (codigo_m: string) =>
-  getMethod<MailsDataType>(
-    `${API}/api/Consultas/correolista?codigo=${codigo_m}`
-  ).then(({ status, listaDatos }) => {
-    if (!status) throw Error("API Error");
-    return listaDatos;
-  });
+export const getMailsAPI = (mailsAPI: string, codigo_m: string) =>
+  getMethod<MailsDataType>(`${API}/api/${mailsAPI}?codigo=${codigo_m}`).then(
+    ({ status, listaDatos, error }) => {
+      if (!status || error) throw Error("API Error");
+      return listaDatos;
+    }
+  );
 
 interface DeleteResType {
   rpta: number;

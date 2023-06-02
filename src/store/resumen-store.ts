@@ -17,7 +17,7 @@ export const resumenStore: StateCreator<StoreType, [], [], ResumenStoreType> = (
   resumenError: false,
   getResumen: (codigo_m: string) => {
     set({ resumenLoading: true, resumenError: false });
-    getResumenAPI(codigo_m)
+    getResumenAPI("Consultas/contadores", codigo_m)
       .then((resumen) => {
         set({ resumen, resumenLoading: false });
       })

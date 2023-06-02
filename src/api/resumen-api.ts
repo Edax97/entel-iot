@@ -13,9 +13,9 @@ interface DataContadoresType {
   mensaje: string;
 }
 
-export const getResumenAPI = (codigo_m: string) =>
+export const getResumenAPI = (resumenAPI: string, codigo_m: string) =>
   postMethod<DataContadoresType>(
-    `${API}/api/Consultas/contadores?codigo=${codigo_m}`
+    `${API}/api/${resumenAPI}?codigo=${codigo_m}`
   ).then(({ status, data }) => {
     if (!status) throw Error("API Error");
     return data;

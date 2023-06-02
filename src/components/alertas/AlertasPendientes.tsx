@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useAlertasState } from "../../api-state/useAlertasState";
+import { useAlertasAPI } from "../../api-state/useAlertasAPI";
 import CardWidget from "../common/card-widget/CardWidget";
 import Loading from "../common/loading/Loading";
 import ErrorMessage from "../common/message/ErrorMessage";
@@ -10,7 +10,7 @@ import { useAppStore } from "../../store/store";
 export default function AlertasPendientes() {
   const [page, setPage] = useState<number>(1);
   const id = useAppStore((state) => state.user?.id);
-  const { paginas, error, isLoading } = useAlertasState(`${id}`, 1, "1");
+  const { paginas, error, isLoading } = useAlertasAPI(`${id}`, 1, "1");
 
   const prev = useCallback(
     (page: number) => {

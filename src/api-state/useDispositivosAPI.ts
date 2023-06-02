@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { getAllDevicesAPI } from "../api/dispositivos-api";
 
-export function useDispositivosState(codigo_m: string) {
+export function useDispositivosAPI(codigo_m: string) {
   const { data, error, isLoading, mutate } = useSWR(
     ["Consultas/dispositivoslista", codigo_m],
     (args) => getAllDevicesAPI(...args)

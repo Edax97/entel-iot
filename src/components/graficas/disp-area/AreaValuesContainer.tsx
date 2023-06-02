@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { useAreasState } from "../../../api-state/useAreasState";
+import { useAreasAPI } from "../../../api-state/useAreasAPI";
 import { CameraAPIType, updateAreaAPI } from "../../../api/cameras-api";
 import { useAreaGraficaContext } from "../../../store/AreaGraficaProvider";
 import { useAppStore } from "../../../store/store";
@@ -11,7 +11,7 @@ import AreaValues from "./AreaValues";
 export default function AreaValuesContainer() {
   const id = useAppStore((state) => state.user?.id);
   const { currentArea } = useAreaGraficaContext();
-  const { areaLista, mutate, isLoading, error } = useAreasState(`${id}`);
+  const { areaLista, mutate, isLoading, error } = useAreasAPI(`${id}`);
 
   const area = useMemo<CameraAPIType | null>(() => {
     if (!currentArea) return null;

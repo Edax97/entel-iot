@@ -35,6 +35,9 @@ export default function CardWidget(props: Props) {
           </span>
         </div>
       )}
+      {/* <div className={minimized ? 'd-none': 'd-block'}>
+        {children}
+      </div> */}
       {!minimized && children}
     </div>
   );

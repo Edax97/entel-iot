@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { useAppStore } from "../../store/store";
-import SidebarOff from "../sidebar/SidebarOff";
 import Notification from "./Notifications";
 import TopBar from "./TopBar";
 import UserOptions from "./UserOptions";
@@ -12,8 +11,6 @@ export default function TopBarContainer() {
 
   return (
     <TopBar statusText={`Hola, ${userName}.`}>
-      <SidebarOff />
-
       <Notification notifications={notifications} />
       <UserOptions userName={userName || ""} onLogout={logout} />
     </TopBar>

@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useAlertasState } from "../../api-state/useAlertasState";
+import { useAlertasAPI } from "../../api-state/useAlertasAPI";
 import { useAppStore } from "../../store/store";
 import AlertasPage from "./AlertasPage";
 
@@ -14,6 +14,6 @@ export default function AlertasPageContainer(props: Props) {
     () => (props.tipoStr === "pendientes" ? "1" : "0"),
     [props]
   );
-  const { alertas } = useAlertasState(`${id}`, props.page, tipo);
+  const { alertas } = useAlertasAPI(`${id}`, props.page, tipo);
   return <AlertasPage alertaList={alertas || []} />;
 }

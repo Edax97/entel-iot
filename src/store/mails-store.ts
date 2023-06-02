@@ -27,7 +27,7 @@ export const mailsStore: StateCreator<StoreType, [], [], MailsStoreType> = (
   mailList: [],
   getMails: (codigo_m: string) => {
     set({ mailsLoading: true, mailsError: false });
-    getMailsAPI(codigo_m)
+    getMailsAPI("Consultas/correolista", codigo_m)
       .then((mailList) => set({ mailList, mailsLoading: false }))
       .catch(() => set({ mailsLoading: false, mailsError: true }));
   },

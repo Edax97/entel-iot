@@ -75,7 +75,7 @@ export default function CameraDiagram(props: Props) {
             : { top: y + 1.2 * radius, transform: "translate(-50%)" };
 
         return (
-          <div key={dev.dis_id}>
+          <div key={dev.dis_id} className="animate__animated animate__fadeIn">
             {dev.temp > +dev.dis_maxt ||
             dev.temp < +dev.dis_mint ||
             dev.hum > +dev.dis_maxh ||

@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import useSWR from "swr";
 import { getCamerasAPI } from "../api/cameras-api";
 
-export function useAreasState(codigo_m: string) {
+export function useAreasAPI(codigo_m: string) {
   const { data, error, isLoading, mutate } = useSWR(
     ["Consultas/locacionlista", codigo_m],
     () => getCamerasAPI(codigo_m)

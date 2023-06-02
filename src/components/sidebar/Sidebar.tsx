@@ -53,9 +53,13 @@ function Sidebar(props: Props) {
           </div>
         );
       })}
+      <div className="px-2 py-1 text-white">
+        <hr />
+      </div>
       <div className="px-3 py-3">
         <div
           className="d-flex gap-3 align-items-center link"
+          role={"button"}
           onClick={props.onLogout}
         >
           <i className="bi bi-box-arrow-right fs-4"></i>

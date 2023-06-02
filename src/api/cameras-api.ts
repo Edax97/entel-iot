@@ -36,17 +36,20 @@ export const getCamerasAPI = (codigo_m: string) =>
   });
 
 export const getCameraDevicesAPI = async (codigo_m: string) => {
-  const areaList = await getCamerasAPI(codigo_m);
-
-  const areaDevicesList: CameraDevicesType[] = await Promise.all(
-    areaList.map((area) =>
-      getDispostivosAPI(`${area.loc_id}`).then((devices) => ({
-        ...area,
-        loc_devices: devices,
-      }))
-    )
-  );
-  return areaDevicesList;
+  try {
+    const areaList = await getCamerasAPI(codigo_m);
+    const areaDevicesList: CameraDevicesType[] = await Promise.all(
+      areaList.map((area) =>
+        getDispostivosAPI(`${area.loc_id}`).then((devices) => ({
+          ...area,
+          loc_devices: devices,
+        }))
+      )
+    );
+    return areaDevicesList;
+  } catch (e) {
+    throw Error("API error.");
+  }
 };
 
 export interface AreaUpdateType {

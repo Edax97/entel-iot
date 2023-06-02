@@ -5,7 +5,7 @@ import {
   DispositivoAPIType,
   updateDispositivoAPI,
 } from "../../../api/dispositivos-api";
-import { useDispositivosState } from "../../../api-state/useDispositivosState";
+import { useDispositivosAPI } from "../../../api-state/useDispositivosAPI";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import Paginacion from "../../common/paginacion/Paginacion";
@@ -17,7 +17,7 @@ const itemsPerPage = 10;
 export default function DispositivosContainer() {
   const id = useAppStore((state) => state.user?.id);
   const { registros, dispositivoLista, error, isLoading, mutate } =
-    useDispositivosState(`${id}`);
+    useDispositivosAPI(`${id}`);
 
   const [page, setPage] = useState(1);
   const pageCount = useMemo(
