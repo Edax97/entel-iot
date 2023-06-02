@@ -11,7 +11,7 @@ export default function GraficaCard() {
   if (!currentArea) return null;
   return (
     <CardWidget title={currentArea.name} toolbar={true}>
-      <div className="py-4 px-5 row gx-4 gy-5">
+      <div className="py-4 px-4 px-lg-5 row gx-4 gy-5">
         <div className="col-12 col-xl-8">
           <AreaGraficaContainer />
         </div>

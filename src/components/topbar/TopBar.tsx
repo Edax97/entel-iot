@@ -23,7 +23,7 @@ export default function TopBar(props: Props) {
         </a>
 
         <div
-          className="ms-2 fs-6 text-opacity-75 text-white"
+          className="ms-2 fs-6 text-opacity-75 text-white d-none d-lg-block"
           style={{ letterSpacing: "0.01em" }}
         >
           {props.statusText}

@@ -59,24 +59,32 @@ export default function AreaGraficaContainer() {
   if (error) return <ErrorMessage message="Error al cargar gráficas" />;
   return (
     <div>
-      <div className="text-secondary">Temperatura</div>
-      <div className="mt-2">
-        <GraficoLeyendaComponent<AreaDatumT>
-          timeDomain={timeRange}
-          series={graficaFiltered}
-          unidad="°C"
-          accessors={tempAccesors}
-        />
+      <div className="text-secondary">Temperatura (°C)</div>
+      <div
+        style={{ overflowX: "auto", whiteSpace: "nowrap", maxWidth: "80vw" }}
+      >
+        <div className="my-2" style={{ minWidth: 600 }}>
+          <GraficoLeyendaComponent<AreaDatumT>
+            timeDomain={timeRange}
+            series={graficaFiltered}
+            unidad="°C"
+            accessors={tempAccesors}
+          />
+        </div>
       </div>
 
-      <div className="text-secondary pt-4">Humedad</div>
-      <div className="pt-2">
-        <GraficoLeyendaComponent<AreaDatumT>
-          timeDomain={timeRange}
-          series={graficaFiltered}
-          unidad="%"
-          accessors={humeAccessors}
-        />
+      <div className="text-secondary pt-4">Humedad (%)</div>
+      <div
+        style={{ overflowX: "auto", whiteSpace: "nowrap", maxWidth: "80vw" }}
+      >
+        <div className="my-2" style={{ minWidth: 600 }}>
+          <GraficoLeyendaComponent<AreaDatumT>
+            timeDomain={timeRange}
+            series={graficaFiltered}
+            unidad="%"
+            accessors={humeAccessors}
+          />
+        </div>
       </div>
     </div>
   );
