@@ -20,7 +20,7 @@ export default function CameraDiagram(props: Props) {
     [props.deviceList, devByRow]
   );
   const width_step = props.width / (devByRow + 1);
-  const height_step = width_step > 100 ? width_step : 120;
+  const height_step = rows % 2 === 0 ? 110 : 120;
 
   const fsBox = width_step > 100 ? "small" : "x-small";
   const radius = width_step > 100 ? 14 : 11;
@@ -75,7 +75,7 @@ export default function CameraDiagram(props: Props) {
             : { top: y + 1.2 * radius, transform: "translate(-50%)" };
 
         return (
-          <div key={dev.dis_id} className="animate__animated animate__fadeIn">
+          <div key={dev.dis_id}>
             {dev.temp > +dev.dis_maxt ||
             dev.temp < +dev.dis_mint ||
             dev.hum > +dev.dis_maxh ||

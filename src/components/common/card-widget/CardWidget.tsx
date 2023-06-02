@@ -16,7 +16,7 @@ export default function CardWidget(props: Props) {
 
   return (
     <div
-      className={`${className || "bg-gray"}  card border-0 shadow  `}
+      className={`${className || "bg-gray"}  card border-0 shadow`}
       {...restProps}
     >
       {toolbar && (
@@ -38,7 +38,9 @@ export default function CardWidget(props: Props) {
       {/* <div className={minimized ? 'd-none': 'd-block'}>
         {children}
       </div> */}
-      {!minimized && children}
+      {!minimized && (
+        <div className="animate__animated animate__fadeIn">{children}</div>
+      )}
     </div>
   );
 }
