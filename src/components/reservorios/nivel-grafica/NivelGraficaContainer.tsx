@@ -5,6 +5,7 @@ import { useAppStore } from "../../../store/store";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import { AccessorsType } from "../../common/grafica/GraficaTemporal";
+import SelectRangeContainer from "../../graficas/select/SelectRangeContainer";
 
 export default function NivelGraficaContainer() {
   const timeRange = useAppStore((state) => state.resTimeRange);
@@ -23,12 +24,25 @@ export default function NivelGraficaContainer() {
   return (
     <CardWidget title="Evolución temporal" toolbar={true}>
       <div className="p-4 pb-5">
-        <GraficoLeyendaComponent<LevelDatumType>
-          timeDomain={timeRange}
-          series={series}
-          unidad="m"
-          accessors={accesors}
-        />
+        <SelectRangeContainer />
+        <div className="mt-3">
+          <GraficoLeyendaComponent<LevelDatumType>
+            title="Nivel (m)"
+            timeDomain={timeRange}
+            series={series}
+            unidad="m"
+            accessors={accesors}
+          />
+        </div>
+        <div className="mt-3">
+          <GraficoLeyendaComponent<LevelDatumType>
+            title="Volumen (m³)"
+            timeDomain={timeRange}
+            series={series}
+            unidad="m"
+            accessors={accesors}
+          />
+        </div>
       </div>
     </CardWidget>
   );

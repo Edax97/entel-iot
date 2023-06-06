@@ -5,10 +5,9 @@ import {
   useAreaGraficaContext,
 } from "../../../store/AreaGraficaProvider";
 import { moverFecha } from "../../../utilities/date-utils";
-import SelectRange from "./SelectRange";
+import SelectRange from "../../common/select-range/SelectRange";
 
 export type SinceType = { value: number; label: string };
-export type RangeType = { startDate: Date; endDate: Date } | null;
 const sinceOptions: SinceType[] = [
   { value: 3, label: "3 días" },
   { value: 7, label: "7 días" },

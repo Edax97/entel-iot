@@ -3,7 +3,7 @@ import "./Sidebar.scss";
 //import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { useAppStore } from "../../store/store";
-import { opcionesLista } from "./opciones-lista";
+import { extraOpciones, opcionesLista } from "./opciones-lista";
 
 interface Props {
   sidebarOpen: boolean;
@@ -18,9 +18,12 @@ function Sidebar(props: Props) {
   const user = useAppStore((state) => state.user);
   const linksArray = useMemo(() => {
     if (!user) return [];
-    return user.opciones.map((opcion) =>
-      opcionesLista.find((l) => l.codigo === opcion.codigo)
-    );
+    return [
+      ...user.opciones.map((opcion) =>
+        opcionesLista.find((l) => l.codigo === opcion.codigo)
+      ),
+      ...extraOpciones,
+    ];
   }, [user]);
 
   return (

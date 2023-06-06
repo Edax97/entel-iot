@@ -2,7 +2,7 @@ import { DatePicker } from "react-date-picker";
 import React from "react";
 import Select, { SingleValue } from "react-select";
 import "./select-range-component.scss";
-import { SinceType } from "./SelectRangeContainer";
+import { SinceType } from "../../graficas/select/SelectRangeContainer";
 import { Value } from "react-date-picker/dist/cjs/shared/types";
 import { RangeT } from "../../../store/AreaGraficaProvider";
 

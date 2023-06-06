@@ -7,9 +7,9 @@
       "imei": "imei-01020120e193e",
       "maximo": 35,
       "minimo": 10,
-      "nivel": 14.6,
+      "nivel": 16,
       "volumen": 1230,
-      "bateria": 50,
+      "bateria": 5,
       "signal": 4
     },
     {
@@ -29,7 +29,7 @@
       "minimo": 11,
       "nivel": 35.6,
       "volumen": 2340,
-      "bateria": 41,
+      "bateria": 25,
       "signal": 3
     }
   ],

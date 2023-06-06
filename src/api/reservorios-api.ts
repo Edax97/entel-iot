@@ -1,7 +1,14 @@
-import { ReservorioLevelType } from "../store/reservorios-store";
-
 const reservoriosURL = "data-api/reservorios.json";
-
+export interface ReservorioLevelType {
+  id: string;
+  imei: string;
+  maximo: number;
+  minimo: number;
+  nivel: number;
+  volumen: number;
+  bateria: number;
+  signal: number;
+}
 interface DataReservoriosType {
   status: boolean;
   totalRegistros: number;

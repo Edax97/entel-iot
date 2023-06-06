@@ -18,6 +18,7 @@ export default function AreaRow(props: Props) {
     (key: string, value: string) => {
       if (!area) return;
       //Validation
+      //const value = `${value}`;
       if (value.length > 50 || value.length === 0) return;
       setArea({ ...area, [key]: value });
     },
@@ -41,28 +42,28 @@ export default function AreaRow(props: Props) {
       <td className="px-3">
         <InputSm
           value={area.loc_max_temp}
-          onChange={(e) => updateRow("loc_max_temp", e.target.value)}
+          onChange={(e) => updateRow("loc_max_temp", `${+e.target.value}`)}
           required
         />
       </td>
       <td className="px-3">
         <InputSm
           value={area.loc_min_temp}
-          onChange={(e) => updateRow("loc_min_temp", e.target.value)}
+          onChange={(e) => updateRow("loc_min_temp", `${+e.target.value}`)}
           required
         />
       </td>
       <td className="px-3">
         <InputSm
           value={area.loc_max_hume}
-          onChange={(e) => updateRow("loc_max_hume", e.target.value)}
+          onChange={(e) => updateRow("loc_max_hume", `${+e.target.value}`)}
           required
         />
       </td>
       <td>
         <InputSm
           value={area.loc_min_hume}
-          onChange={(e) => updateRow("loc_min_hume", e.target.value)}
+          onChange={(e) => updateRow("loc_min_hume", `${+e.target.value}`)}
           required
         />
       </td>

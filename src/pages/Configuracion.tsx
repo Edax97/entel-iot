@@ -5,7 +5,7 @@ import MailConfigContainer from "../components/config/mails/MailConfigContainer"
 
 export default function Configuracion() {
   return (
-    <div className="container-fluid py-4 px-4">
+    <div className="container-fluid py-4 px-lg-5">
       <div>
         <MailConfigContainer />
       </div>

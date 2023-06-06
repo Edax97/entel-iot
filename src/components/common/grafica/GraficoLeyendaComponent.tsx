@@ -14,6 +14,7 @@ interface SeriesType<DatumT> {
 }
 interface Props<DatumT> {
   className?: string;
+  title?: string;
   timeDomain: [Date, Date];
   series: SeriesType<DatumT>[];
   unidad: string;
@@ -22,6 +23,7 @@ interface Props<DatumT> {
 
 export default function GraficoLeyendaComponent<DatumT extends {}>({
   className,
+  title,
   series,
   ...graficoProps
 }: Props<DatumT>) {
@@ -64,6 +66,7 @@ export default function GraficoLeyendaComponent<DatumT extends {}>({
           <>
             <div className="ps-5">
               <Leyenda
+                title={title}
                 seriesLegend={seriesLegend}
                 toggleSeries={toggleSeries}
               />

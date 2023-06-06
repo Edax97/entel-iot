@@ -8,6 +8,8 @@ import Alertas from "../pages/Alertas";
 import Reservorios from "../pages/Reservorios";
 import Layout from "../pages/Layout";
 import SignIn from "../pages/Signin";
+import Areas from "../pages/Areas";
+import Dispositivos from "../pages/Dispositivos";
 
 function MyRoutes() {
   return (
@@ -20,6 +22,8 @@ function MyRoutes() {
         <Route path="reportes" element={<Reportes />}></Route>
         <Route path="graficos" element={<Graficas />}></Route>
         <Route path="alertas" element={<Alertas />}></Route>
+        <Route path="dispositivos" element={<Dispositivos />}></Route>
+        <Route path="areas" element={<Areas />}></Route>
       </Route>
     </Routes>
   );

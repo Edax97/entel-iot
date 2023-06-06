@@ -8,14 +8,20 @@ export interface SeriesLegend {
 }
 
 interface Props {
+  title?: string;
   seriesLegend: SeriesLegend[];
   toggleSeries?: (id: number) => void;
 }
 
 export default function Leyenda(props: Props) {
   return props.seriesLegend.length > 0 ? (
-    <div className="px-2 pt-1" style={{ fontSize: "small" }}>
+    <div style={{ fontSize: "small" }}>
       <div className="d-flex flex-wrap">
+        {props.title && (
+          <div className="pe-2 text-dark text-opacity-75 pt-2">
+            {props.title}
+          </div>
+        )}
         {props.seriesLegend.map((serie) => (
           <div
             className="px-1"

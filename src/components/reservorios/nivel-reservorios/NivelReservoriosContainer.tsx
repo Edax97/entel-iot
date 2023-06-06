@@ -1,15 +1,13 @@
 import React from "react";
-import { useAppStore } from "../../../store/store";
+import { useReservoriosAPI } from "../../../api-state/useReservoriosAPI";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import NivelReservorios from "./NivelReservorios";
 
 export default function NivelReservoriosContainer() {
-  const reservorios = useAppStore((state) => state.reservorios);
-  const getLoading = useAppStore((state) => state.getResLoading);
-  const getError = useAppStore((state) => state.getResError);
+  const { reservorios, loading, error } = useReservoriosAPI("1");
 
-  if (getLoading) return <Loading className="my-5" />;
-  if (getError) return <ErrorMessage message="Error al cargar datos." />;
+  if (loading || !reservorios) return <Loading className="my-5" />;
+  if (error) return <ErrorMessage message="Error al cargar datos." />;
   return <NivelReservorios reservorios={reservorios} />;
 }

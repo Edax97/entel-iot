@@ -1,17 +1,6 @@
 import { StateCreator } from "zustand";
-import { getReservoriosAPI } from "../api/reservorios-api";
+import { getReservoriosAPI, ReservorioLevelType } from "../api/reservorios-api";
 import { StoreType } from "./store";
-
-export interface ReservorioLevelType {
-  id: string;
-  imei: string;
-  maximo: number;
-  minimo: number;
-  nivel: number;
-  volumen: number;
-  bateria: number;
-  signal: number;
-}
 
 export interface ReservoriosStoreType {
   reservorios: ReservorioLevelType[];

@@ -24,7 +24,6 @@ export const opcionesLista = [
     icon: <i className="bi bi-file-earmark-text"></i>,
     to: "/reportes",
   },
-
   {
     label: "Alertas",
     codigo: 7,
@@ -36,5 +35,20 @@ export const opcionesLista = [
     codigo: 10,
     icon: <i className="bi bi-water"></i>,
     to: "/reservorios",
+  },
+];
+
+export const extraOpciones = [
+  {
+    label: "Áreas",
+    codigo: 11,
+    icon: <i className="bi bi-fullscreen"></i>,
+    to: "/areas",
+  },
+  {
+    label: "Dispositivos",
+    codigo: 12,
+    icon: <i className="bi bi-cpu"></i>,
+    to: "/dispositivos",
   },
 ];
