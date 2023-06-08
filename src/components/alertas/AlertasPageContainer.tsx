@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useAlertasAPI } from "../../api-state/useAlertasAPI";
 import { useAppStore } from "../../store/store";
-import AlertasPage from "./AlertasPage";
+import AlertasTable from "./AlertasTable";
 
 interface Props {
   page: number;
@@ -15,5 +15,5 @@ export default function AlertasPageContainer(props: Props) {
     [props]
   );
   const { alertas } = useAlertasAPI(`${id}`, props.page, tipo);
-  return <AlertasPage alertaList={alertas || []} />;
+  return <AlertasTable alertaList={alertas || []} />;
 }

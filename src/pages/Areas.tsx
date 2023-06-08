@@ -8,11 +8,11 @@ export default function Areas() {
       className="container-fluid py-4 px-lg-5"
       //style={{ maxWidth: "min-content" }}
     >
-      <div className="row gy-4">
-        <div className="col-12 col-xxl-3">
+      <div className="row gy-4 justify-content-center">
+        <div className="col-12 col-lg-10 col-xxl-4">
           <NewAreaContainer />
         </div>
-        <div className="col-12 col-xxl-9">
+        <div className="col-12 col-xxl-8">
           <AreasContainer />
         </div>
       </div>

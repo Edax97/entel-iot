@@ -22,16 +22,7 @@ export default function ReporteTable(props: Props) {
           <tr key={r.fecha}>
             {Object.keys(props.headers).map((k) => (
               <td className="px-3" key={k}>
-                {r[k]
-                  ? r[k]
-                      .replace("Â", "")
-                      .split("C")
-                      .map((l, i) => (
-                        <div key={l}>
-                          {i === 0 && k !== "fecha" ? `${l}C` : l}
-                        </div>
-                      ))
-                  : ""}
+                {r[k] ? r[k] : ""}
               </td>
             ))}
           </tr>

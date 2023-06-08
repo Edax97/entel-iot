@@ -66,7 +66,7 @@ export default function DispositivosContainer() {
     );
   return (
     <CardWidget title="Configurar dispositivos registrados." toolbar={true}>
-      <div className="p-4 pb-2">
+      <div className="pt-4 pb-2">
         <DispositivosLista
           onEdit={onEdit}
           dispositivoLista={dispositivosPage}

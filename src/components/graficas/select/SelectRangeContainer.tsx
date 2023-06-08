@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { SingleValue } from "react-select";
+import React, { useCallback, useEffect } from "react";
 import {
   RangeT,
   useAreaGraficaContext,
@@ -19,56 +18,22 @@ const sinceOptions: SinceType[] = [
 export default function SelectRangeContainer() {
   const { timeRange, updateTimeRange } = useAreaGraficaContext();
 
-  const [tempRange, setTempRange] = useState<RangeT>(null);
-  const [sinceSelected, setSinceSelected] = useState<SinceType>({
-    value: 0,
-    label: "Intervalo de ...",
-  });
-  const [validationError, setValidationError] = useState(false);
-
   useEffect(() => {
     updateTimeRange([moverFecha(new Date(), -14), new Date()]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    setTempRange(timeRange);
-  }, [timeRange]);
 
-  const setStartDate = (startDate: any) => {
-    if (!tempRange || !startDate) return;
-    setValidationError(false);
-    setTempRange([startDate, tempRange[1]]);
-  };
-  const setEndDate = (endDate: any) => {
-    if (!tempRange || !endDate) return;
-    setValidationError(false);
-    setTempRange([tempRange[0], endDate]);
-  };
-  const selectSince = useCallback((v: SingleValue<SinceType>) => {
-    if (!v) return;
-    setSinceSelected(v);
-    setTempRange([moverFecha(new Date(), -v.value), new Date()]);
-    setValidationError(false);
-  }, []);
-
-  const onFilter = useCallback(() => {
-    if (!tempRange) return;
-    if (tempRange[0] > tempRange[1]) {
-      setValidationError(true);
-      return;
-    }
-    updateTimeRange(tempRange);
-  }, [tempRange, updateTimeRange]);
+  const onFilter = useCallback(
+    (range: RangeT) => {
+      updateTimeRange(range);
+    },
+    [updateTimeRange]
+  );
 
   return (
     <SelectRange
-      tempRange={tempRange}
-      sinceSelected={sinceSelected}
+      timeRange={timeRange}
       sinceOptions={sinceOptions}
-      validationError={validationError}
-      setStartDate={setStartDate}
-      setEndDate={setEndDate}
-      selectSince={selectSince}
       onFilter={onFilter}
     />
   );

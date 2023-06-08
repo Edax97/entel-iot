@@ -1,32 +1,64 @@
 import { DatePicker } from "react-date-picker";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Select, { SingleValue } from "react-select";
 import "./select-range-component.scss";
 import { SinceType } from "../../graficas/select/SelectRangeContainer";
-import { Value } from "react-date-picker/dist/cjs/shared/types";
 import { RangeT } from "../../../store/AreaGraficaProvider";
+import { moverFecha } from "../../../utilities/date-utils";
 
 interface Props {
-  tempRange: RangeT;
-  sinceSelected: SinceType;
+  timeRange: RangeT;
   sinceOptions: SinceType[];
-  validationError: boolean;
-
-  setStartDate: (d: Value) => any;
-  setEndDate: (d: Value) => any;
-  selectSince: (v: SingleValue<SinceType>) => any;
-  onFilter: () => any;
+  onFilter: (r: RangeT) => any;
 }
 export default function SelectRange(props: Props) {
-  if (!props.tempRange) return null;
+  const [tempRange, setTempRange] = useState<RangeT>(null);
+  useEffect(() => {
+    setTempRange(props.timeRange);
+  }, [props.timeRange]);
+
+  const [sinceSelected, setSinceSelected] = useState<SinceType>({
+    value: 0,
+    label: "Intervalo de ...",
+  });
+
+  const [validationError, setValidationError] = useState(false);
+  const setStartDate = (startDate: any) => {
+    if (!tempRange || !startDate) return;
+    setValidationError(false);
+    setTempRange([startDate, tempRange[1]]);
+  };
+  const setEndDate = (endDate: any) => {
+    if (!tempRange || !endDate) return;
+    setValidationError(false);
+    setTempRange([tempRange[0], endDate]);
+  };
+  const selectSince = useCallback((v: SingleValue<SinceType>) => {
+    if (!v) return;
+    setSinceSelected(v);
+    setTempRange([moverFecha(new Date(), -v.value), new Date()]);
+    setValidationError(false);
+  }, []);
+
+  const onFilter = useCallback(() => {
+    if (!tempRange) return;
+    if (tempRange[0] > tempRange[1]) {
+      setValidationError(true);
+      return;
+    }
+    props.onFilter(tempRange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tempRange, props.onFilter]);
+
+  if (!tempRange) return null;
   return (
     <div className="">
       <div className="d-flex align-items-center flex-wrap gap-3">
         <div className="d-flex align-items-center">
           <span className="opacity-75">Desde:</span>
           <DatePicker
-            value={props.tempRange[0]}
-            onChange={props.setStartDate}
+            value={tempRange[0]}
+            onChange={setStartDate}
             clearIcon={null}
             locale="es-ES"
             maxDate={new Date()}
@@ -36,8 +68,8 @@ export default function SelectRange(props: Props) {
         <div className="d-flex align-items-center">
           <span className="opacity-75">Hasta:</span>
           <DatePicker
-            value={props.tempRange[1]}
-            onChange={props.setEndDate}
+            value={tempRange[1]}
+            onChange={setEndDate}
             clearIcon={null}
             locale="es-ES"
             maxDate={new Date()}
@@ -47,8 +79,8 @@ export default function SelectRange(props: Props) {
 
         <Select
           options={props.sinceOptions}
-          value={props.sinceSelected}
-          onChange={props.selectSince}
+          value={sinceSelected}
+          onChange={selectSince}
           className="text-dark text-opacity-75 select-input"
           classNames={{
             option: (state) =>
@@ -59,14 +91,11 @@ export default function SelectRange(props: Props) {
                 : "",
           }}
         />
-        <button
-          className="ms-1 btn btn-primary text-white"
-          onClick={props.onFilter}
-        >
+        <button className="ms-1 btn btn-primary text-white" onClick={onFilter}>
           Filtrar
         </button>
       </div>
-      {props.validationError && (
+      {validationError && (
         <div className="mt-3 alert alert-danger py-2">
           Ingrese un rango temporal válido
         </div>

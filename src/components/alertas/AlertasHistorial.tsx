@@ -32,7 +32,7 @@ export default function AlertasHistorial() {
     return <ErrorMessage message="Error al cargar alertas." className="my-3" />;
   return (
     <CardWidget title="Alertas registradas" toolbar={true}>
-      <div className="m-4 mx-5 mb-2">
+      <div className="mx-5 my-2">
         <div className="d-none">
           <AlertasPageContainer page={prev(page)} tipoStr="historial" />
           <AlertasPageContainer page={next(page)} tipoStr="historial" />

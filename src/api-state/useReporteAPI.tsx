@@ -6,7 +6,7 @@ import { RangeT } from "../store/AreaGraficaProvider";
 
 export interface ReporteRowType {
   fecha: string;
-  [key: string]: string;
+  [key: string]: any;
 }
 
 export function useReporteAPI(
@@ -37,17 +37,21 @@ export function useReporteAPI(
     let dataReporte: ReporteRowType[] = [];
     if (!data) return [];
     data.data.forEach((d) => {
+      const metricas = d.reporte_metricas_prom
+        .replace("Â", "")
+        .split("C")
+        .join("C \n");
       if (dataReporte[0]?.fecha === d.reporte_fecha) {
         dataReporte[0] = {
           ...dataReporte[0],
-          [d.reporte_sensor_id]: d.reporte_metricas_prom,
+          [d.reporte_sensor_id]: metricas,
         };
         return;
       }
       dataReporte = [
         {
           fecha: d.reporte_fecha,
-          [d.reporte_sensor_id]: d.reporte_metricas_prom,
+          [d.reporte_sensor_id]: metricas,
         },
         ...dataReporte,
       ];

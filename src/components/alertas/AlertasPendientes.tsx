@@ -32,7 +32,7 @@ export default function AlertasPendientes() {
     return <ErrorMessage message="Error al cargar alertas." className="my-3" />;
   return (
     <CardWidget title="Alertas activas" toolbar={true}>
-      <div className="mt-4 mx-5 mb-2">
+      <div className="mx-5 my-2">
         <div className="d-none">
           <AlertasPageContainer page={prev(page)} tipoStr="pendientes" />
           <AlertasPageContainer page={next(page)} tipoStr="pendientes" />
