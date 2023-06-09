@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { MailAPIType } from "../../../api/mails-api";
+import ResponsiveContainer from "../../common/ResponsiveContainer";
 
 interface Props {
   mailList: MailAPIType[];
@@ -54,33 +55,38 @@ export default function MailConfig(props: Props) {
           Añadir
         </button>
       </form>
-      <div className="me-3">
-        <table className="table" style={{ fontSize: "small" }}>
-          <thead>
-            <tr>
-              <th className="px-4">Nombre</th>
-              <th className="px-4">Correo</th>
-              <th className="px-4">Acción</th>
-            </tr>
-          </thead>
-          <tbody className="text-dark text-opacity-75">
-            {props.mailList.map((mail) => (
-              <tr key={mail.correo_id}>
-                <td className="px-4">{mail.correo_nombre}</td>
-                <td className="px-4">{mail.correo_email}</td>
-                <td className="px-4">
-                  <button
-                    className="btn btn-outline-danger btn-sm"
-                    onClick={() => props.onDeleteMail(`${mail.correo_id}`)}
-                    disabled={props.deleteLoading}
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+      <div>
+        <ResponsiveContainer>
+          <div className="pe-3">
+            <table className="table" style={{ fontSize: "small" }}>
+              <thead>
+                <tr>
+                  <th className="px-4">Nombre</th>
+                  <th className="px-4">Correo</th>
+                  <th className="px-4">Acción</th>
+                </tr>
+              </thead>
+              <tbody className="text-dark text-opacity-75">
+                {props.mailList.map((mail) => (
+                  <tr key={mail.correo_id}>
+                    <td className="px-4">{mail.correo_nombre}</td>
+                    <td className="px-4">{mail.correo_email}</td>
+                    <td className="px-4">
+                      <button
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => props.onDeleteMail(`${mail.correo_id}`)}
+                        disabled={props.deleteLoading}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </ResponsiveContainer>
       </div>
     </div>
   );

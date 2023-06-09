@@ -1,5 +1,6 @@
 import React from "react";
 import { CameraAPIType } from "../../../api/cameras-api";
+import ResponsiveContainer from "../../common/ResponsiveContainer";
 import AreaRow from "./AreaRow";
 
 interface Props {
@@ -9,8 +10,8 @@ interface Props {
 }
 export default function AreaLista(props: Props) {
   return (
-    <div className="table-responsive">
-      <table className="table" style={{ fontSize: "small" }}>
+    <ResponsiveContainer>
+      <table className="table mx-auto" style={{ fontSize: "small" }}>
         <thead>
           <tr>
             <th className="px-3" rowSpan={2}>
@@ -53,6 +54,6 @@ export default function AreaLista(props: Props) {
           ))}
         </tbody>
       </table>
-    </div>
+    </ResponsiveContainer>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppStore } from "../../store/store";
-import { opcionesLista } from "./opciones-lista";
+import { extraOpciones, opcionesLista } from "./opciones-lista";
 import Logo from "../../assets/logo.png";
 import BtnIcon from "../common/btn-icon/BtnIcon";
 
@@ -10,9 +10,12 @@ export default function SidebarOff() {
   const user = useAppStore((state) => state.user);
   const linksArray = useMemo(() => {
     if (!user) return [];
-    return user.opciones.map((opcion) =>
-      opcionesLista.find((l) => l.codigo === opcion.codigo)
-    );
+    return [
+      ...user.opciones.map((opcion) =>
+        opcionesLista.find((l) => l.codigo === opcion.codigo)
+      ),
+      ...extraOpciones,
+    ];
   }, [user]);
   return (
     <div

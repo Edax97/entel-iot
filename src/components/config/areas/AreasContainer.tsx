@@ -1,31 +1,18 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useAreasAPI } from "../../../api-state/useAreasAPI";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
 import CardWidget from "../../common/card-widget/CardWidget";
-import Paginacion from "../../common/paginacion/Paginacion";
-import AreaLista from "./AreaLista";
 import { CameraAPIType, updateAreaAPI } from "../../../api/cameras-api";
 import { useAppStore } from "../../../store/store";
 import SuccessMessage from "../../common/message/SuccessMessage";
-const itemsPerPage = 10;
+import AreaLista from "./AreaLista";
+import TablePagination from "../../common/table/TablePagination";
+import TableFilter from "../../common/table/TableFilter";
 
 export default function AreasContainer() {
   const id = useAppStore((state) => state.user?.id);
-  const { areaLista, registros, error, isLoading, mutate } = useAreasAPI(
-    `${id}`
-  );
-
-  const [page, setPage] = useState(1);
-  const pageCount = useMemo(
-    () => (registros ? Math.ceil(registros / itemsPerPage) : 1),
-    [registros]
-  );
-
-  const areasPage = useMemo(
-    () => areaLista?.slice(itemsPerPage * (page - 1), itemsPerPage * page),
-    [areaLista, page]
-  );
+  const { areaLista, error, isLoading, mutate } = useAreasAPI(`${id}`);
 
   const [editState, setEditState] = useState({
     error: false,
@@ -51,32 +38,49 @@ export default function AreasContainer() {
         setEditState({ ...editState, success: true, loading: false });
       } catch (e) {
         setEditState({ ...editState, error: true, loading: false });
+        mutate();
       }
     },
     [mutate, editState]
   );
 
+  const headersCSV = [
+    { label: "Nombre", key: "loc_nombre" },
+    { label: "Descripción", key: "loc_descripcion" },
+    { label: "Máx. Temp", key: "loc_max_temp" },
+    { label: "Mín. Temp", key: "loc_min_temp" },
+    { label: "Máx. Hume", key: "loc_max_hume" },
+    { label: "Mín. Hume", key: "loc_min_hume" },
+    { label: "Status", key: "loc_status" },
+    { label: "Conexión del gateway", key: "loc_status" },
+  ];
+
   if (isLoading) return <Loading className="my-5" />;
-  if (error || !areaLista || !areasPage)
+  if (error || !areaLista)
     return (
       <ErrorMessage className="my-4" message="Error al cargar configuración." />
     );
   return (
     <CardWidget title="Configurar áreas registradas." toolbar={true}>
       <div className="p-4 pb-2">
-        <AreaLista
-          onEdit={onEdit}
-          areaLista={areasPage}
-          editLoading={editState.loading}
+        <TableFilter
+          dataLista={areaLista}
+          headersCSV={headersCSV}
+          render={(listaFiltered) => (
+            <TablePagination
+              itemsPerPage={10}
+              dataLista={listaFiltered}
+              render={(lista) => (
+                <AreaLista
+                  onEdit={onEdit}
+                  areaLista={lista}
+                  editLoading={editState.loading}
+                />
+              )}
+            />
+          )}
         />
-        <div className="d-flex justify-content-end pt-3">
-          <Paginacion
-            pageCount={pageCount}
-            onPageChange={(item) => {
-              setPage(item.selected + 1);
-            }}
-          />
-        </div>
+
         {editState.error && (
           <ErrorMessage className="mt-3" message="Error al actualizar área." />
         )}

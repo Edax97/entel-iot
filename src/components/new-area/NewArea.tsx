@@ -1,5 +1,5 @@
 import React, { CSSProperties, FormEvent, useCallback, useState } from "react";
-import FieldControl, { AreaControl } from "./FieldControl";
+import FieldControl, { AreaControl } from "../common/forms/FieldControl";
 
 export interface NewAreaType {
   name: string;

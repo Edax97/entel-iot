@@ -1,6 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import CardWidget from "../../common/card-widget/CardWidget";
-import DispositivosLista from "./DispositivosLista";
 import {
   DispositivoAPIType,
   updateDispositivoAPI,
@@ -8,28 +7,18 @@ import {
 import { useDispositivosAPI } from "../../../api-state/useDispositivosAPI";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/message/ErrorMessage";
-import Paginacion from "../../common/paginacion/Paginacion";
 import { useAppStore } from "../../../store/store";
 import SuccessMessage from "../../common/message/SuccessMessage";
-
-const itemsPerPage = 10;
+import TablePagination from "../../common/table/TablePagination";
+import DispositivosLista from "./DispositivosLista";
+import TableFilter from "../../common/table/TableFilter";
 
 export default function DispositivosContainer() {
   const id = useAppStore((state) => state.user?.id);
-  const { registros, dispositivoLista, error, isLoading, mutate } =
-    useDispositivosAPI(`${id}`);
-
-  const [page, setPage] = useState(1);
-  const pageCount = useMemo(
-    () => (registros ? Math.ceil(registros / itemsPerPage) : 1),
-    [registros]
+  const { dispositivoLista, error, isLoading, mutate } = useDispositivosAPI(
+    `${id}`
   );
 
-  const dispositivosPage = useMemo(
-    () =>
-      dispositivoLista?.slice(itemsPerPage * (page - 1), itemsPerPage * page),
-    [dispositivoLista, page]
-  );
   const [editState, setEditState] = useState({
     error: false,
     success: false,
@@ -54,32 +43,49 @@ export default function DispositivosContainer() {
         setEditState({ ...editState, success: true, loading: false });
       } catch (e) {
         setEditState({ ...editState, error: true, loading: false });
+        mutate();
       }
     },
     [mutate, editState]
   );
 
+  const headersCSV = [
+    { label: "Nombre", key: "dis_nom" },
+    { label: "Área", key: "loc_nom" },
+    { label: "Máx. Temp", key: "dis_maxt" },
+    { label: "Mín. Temp", key: "dis_mint" },
+    { label: "Máx. Hume", key: "dis_maxh" },
+    { label: "Mín. Hume", key: "dis_minh" },
+    { label: "Status", key: "dis_status" },
+    { label: "Batería", key: "dis_status" },
+  ];
+
   if (isLoading) return <Loading className="my-5" />;
-  if (error || !dispositivoLista || !dispositivosPage)
+  if (error || !dispositivoLista)
     return (
       <ErrorMessage className="my-4" message="Error al cargar configuración." />
     );
   return (
     <CardWidget title="Configurar dispositivos registrados." toolbar={true}>
-      <div className="pt-4 pb-2">
-        <DispositivosLista
-          onEdit={onEdit}
-          dispositivoLista={dispositivosPage}
-          editLoading={editState.loading}
+      <div className="p-4 pb-2">
+        <TableFilter
+          dataLista={dispositivoLista}
+          headersCSV={headersCSV}
+          render={(listaFiltered) => (
+            <TablePagination
+              itemsPerPage={10}
+              dataLista={listaFiltered}
+              render={(lista) => (
+                <DispositivosLista
+                  dispositivoLista={lista}
+                  onEdit={onEdit}
+                  editLoading={editState.loading}
+                />
+              )}
+            />
+          )}
         />
-        <div className="d-flex justify-content-end pt-3">
-          <Paginacion
-            pageCount={pageCount}
-            onPageChange={(item) => {
-              setPage(item.selected + 1);
-            }}
-          />
-        </div>
+
         {editState.error && (
           <ErrorMessage
             className="mt-3"

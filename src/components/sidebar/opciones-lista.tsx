@@ -13,6 +13,18 @@ export const opcionesLista = [
     to: "/configuracion",
   },
   {
+    label: "Áreas",
+    codigo: 3,
+    icon: <i className="bi bi-fullscreen"></i>,
+    to: "/areas",
+  },
+  {
+    label: "Dispositivos",
+    codigo: 4,
+    icon: <i className="bi bi-cpu"></i>,
+    to: "/dispositivos",
+  },
+  {
     label: "Graficos",
     codigo: 5,
     icon: <i className="bi bi-bar-chart-fill"></i>,
@@ -38,17 +50,4 @@ export const opcionesLista = [
   },
 ];
 
-export const extraOpciones = [
-  {
-    label: "Áreas",
-    codigo: 11,
-    icon: <i className="bi bi-fullscreen"></i>,
-    to: "/areas",
-  },
-  {
-    label: "Dispositivos",
-    codigo: 12,
-    icon: <i className="bi bi-cpu"></i>,
-    to: "/dispositivos",
-  },
-];
+export const extraOpciones = [];

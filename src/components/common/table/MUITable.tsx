@@ -8,19 +8,18 @@ export default function MUITable({ options, ...restProps }: Props) {
   const getTheme = () => {
     return createTheme({
       components: {
-        MuiPaper: {
+        MuiFormControl: {
           styleOverrides: {
             root: {
-              backgroundColor: "rgba(0,0,0,0)",
-              boxShadow: "none",
+              padding: "1rem !important",
             },
           },
         },
         MUIDataTable: {
           styleOverrides: {
             root: {
-              backgroundColor: "rgba(0,0,0,0)",
-              boxShadow: "none",
+              backgroundColor: "rgba(0,0,0,0) !important",
+              boxShadow: "none !important",
               //fontFamily: "inherit !important",
             },
           },

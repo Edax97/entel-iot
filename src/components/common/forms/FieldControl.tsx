@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 
 const inputStyle: CSSProperties = {
-  maxWidth: "12rem",
+  width: "12rem",
 };
 const udStyle: CSSProperties = {
   width: "3rem",
@@ -9,7 +9,7 @@ const udStyle: CSSProperties = {
 
 interface Props {
   label: string;
-  ud: string;
+  ud?: string;
   value: string;
   type?: "text" | "number";
   setValue: (v: string) => any;
@@ -37,7 +37,7 @@ export default function FieldControl(props: Props) {
           required
         />
         <div className="ps-3 text-secondary" style={props.udStyle || udStyle}>
-          {props.ud}
+          {props.ud || ""}
         </div>
       </div>
     </div>
