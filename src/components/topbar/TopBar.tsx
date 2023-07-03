@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Logo from "../../assets/logo.png";
+//import Logo from "../../assets/logo.png";
 
 interface Props {
   statusText?: string;
@@ -19,7 +19,9 @@ export default function TopBar(props: Props) {
           role="button"
           className=" h-100"
         >
-          <img src={Logo} alt="" style={{ height: "100%" }} />
+          {/* <img src={Logo} alt="" style={{ height: "100%" }} />
+           */}
+          <div className="fw-bold fs-4 p-2 text-white">LABOTEC</div>
         </a>
 
         <div

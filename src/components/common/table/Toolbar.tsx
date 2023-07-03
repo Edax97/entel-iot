@@ -55,7 +55,7 @@ export default function Toolbar(props: Props) {
           filename="entel-iot.xlsx"
           headers={props.headersCSV}
         >
-          <i className="bi bi-file-earmark-excel-fill text-dark text-opacity-75 fs-4" />
+          <i className="bi bi-file-earmark-excel-fill text-dark text-opacity-75 fs-5" />
         </CSVLink>
       </BtnIcon>
 
