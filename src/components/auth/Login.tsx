@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Logo from "../../assets/logo.png";
+//import Logo from "../../assets/logo_labotec.png";
 import { FaLock as Lock } from "react-icons/fa";
 interface Props {
   userName: string;
