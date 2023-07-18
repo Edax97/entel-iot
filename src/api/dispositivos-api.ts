@@ -5,7 +5,6 @@ export interface DispositivoAPIType {
   dis_id: number;
   dis_mas: number;
   dis_loc: string;
-  dis_locacion: string;
   dis_sensor_id: string;
   dis_nom: string;
   dis_maxt: string;
@@ -29,10 +28,15 @@ export interface DispositivosDataType {
 export const getDispostivosAPI = (loc_codigo: string) =>
   postMethod<DispositivosDataType>(
     `${API}/api/Consultas/dispositivoslista?codigo=${loc_codigo}&tipo=0`
-  ).then(({ status, listaDatos }) => {
-    if (!status) throw Error("API Error");
-    return listaDatos;
-  });
+  )
+    .then((r) => {
+      console.log(JSON.stringify(r.listaDatos));
+      return r;
+    })
+    .then(({ status, listaDatos }) => {
+      if (!status) throw Error("API Error");
+      return listaDatos;
+    });
 
 export const getAllDevicesAPI = (devicesAPI: string, codigo_m: string) =>
   postMethod<DispositivosDataType>(

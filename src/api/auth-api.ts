@@ -28,6 +28,7 @@ export const loginAPI = (nombreUsuario: string, clave: string) =>
     body: new URLSearchParams({ nombreUsuario, clave }),
   })
     .then<LoginAPIType>((data) => data.json())
+
     .then(({ message, ...user }) => {
       if (message !== "OK") throw Error("Auth Error");
       return user;
