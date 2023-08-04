@@ -39,6 +39,7 @@ export default function DispositivosContainer() {
 
       try {
         await updateDispositivoAPI(dispositivoUpdate);
+
         mutate();
         setEditState({ ...editState, success: true, loading: false });
       } catch (e) {
