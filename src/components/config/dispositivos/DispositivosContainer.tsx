@@ -29,7 +29,7 @@ export default function DispositivosContainer() {
       setEditState({ error: false, success: false, loading: true });
       const dispositivoUpdate = {
         id: `${d.dis_id}`,
-        loc_id: d.dis_locacion,
+        loc_id: d.dis_loc,
         estado: d.dis_status,
         max_temperatura: d.dis_maxt,
         min_temperatura: d.dis_mint,
